@@ -2,13 +2,12 @@
 가변길이 인수(variable length argument)
 함수를 호출할 때 번달하는 argument 의 갯수가 다양하게 변하는 것
 *이 앞에 있는 인수들이 해당된다.
-
 '''
 
 
 # def test2(x = 1, y): #error : default argument(기본값)들이 있는 default argument 를 갖지 않는(파라미터는 기본값이 없는) 파라미터보다 뒤쪽에 있어야 함.
 #     return x +y      # why? positional argument 때문에
-# 첫번째 argument의 기본값을 주었으면, 그 뒤의 argument의 기본값들도 모두 주어야 한다.
+# 첫번째 argument의 기본값을 주었으면, 그 뒤의 argument 의 기본값들도 모두 주어야 한다.
 # 가변 길이 인수 (함수를 호출할 때 전달하는  argument 의 가변길이가 변할 수 있을 때
 print("a")
 print('a', 'b', sep = ':') #변수 선언 *표, 몇개가 와도 상관없다.
