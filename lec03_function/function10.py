@@ -60,3 +60,38 @@ def hanoi(n: int, x:int = 0, y:int = 0, z:int = 0) -> int:
 
 
 hanoi(7)
+
+# 재귀함수로 하노이의 탑 만들기 정답
+def hanoi_tower(n:int, start:int, target:int, aux:int) -> int:
+    """
+    재귀 함수를 사용해서 하노이의 탑 문제를 해결 방법을 출력
+
+    :param n: 옮길 원반 갯수(양의 정수)
+    :param start: 처음에 원반들이 있는 시작 기둥 번호
+    :param target: 원반들을 모두 옮겨놓을 목표 기둥 번호
+    :param aux: 보조 기둥으로 사용할 기둥 번호 (Auxiliary의 줄임말)
+    :return: None
+    """
+    # error 처리 n < 0 은 하지 않는다.
+    if n == 1:
+        print(f'{start} -> {target}')
+        return
+        # 함수를 종료하겠다는 뜻으로 return을 씀(return의 기능 2가지 : 함수호출, 함수종료)
+    elif n > 1:
+        # n > 1인 경우 : (n-1)개의 원반을 target을 보조기둥으로 사용하여 보조 기둥(aux)에 옮긴다.
+        hanoi_tower(n-1, start, aux, target)
+        # 시작 기둥에 있는 나머지 1개의 원반을 목표기둥으로 옮김
+        print(f'{start} -> {target}')
+        # aux 기둥에 남아있는 (n-1)개의 원반을 start 기둥을 보조기둥으로 사용해서 target으로 옮김
+        hanoi_tower(                                                                                                                                                                                                                                                                                                                                                                                                                                       n-1, aux, target, start)
+
+# 원반 1개
+for n in range(1, 5):
+    print(f'{n}개 원반이 있는 하노이탑')
+    hanoi_tower(n, start = 1, target = 3, aux = 2)
+    print('==============')
+
+
+
+
+
