@@ -1,5 +1,5 @@
 """
-dic (dictionary) : key-value의 쌍으로 이루어진 데이터들을 저장하는 사전식 데이터타입
+dict (dictionary) : key-value의 쌍으로 이루어진 데이터들을 저장하는 사전식 데이터타입
 """
 
 person = {'name':'ohsam', 'age':16, 'height': 170.5} # 중괄호 key:value - 1개의 데이터타입

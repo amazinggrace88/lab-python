@@ -19,6 +19,7 @@ for i in range(5):
     print(i, end = ' ')
 print() #줄바꿈만 출력한다는 의미
 
+
 # 1 ~ 4 까지 출력 range(from, to)
 for i in range(1, 5): #(1, 2, 3, 4)
     print(i, end = ' ')
@@ -31,6 +32,10 @@ print()
 
 # str is iterable for 'for 문'
 for s in 'hello python!':
+    print(s, end=' ')
+print()
+
+for s in 'ariana grande':
     print(s, end=' ')
 print()
 

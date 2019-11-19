@@ -45,10 +45,8 @@ num_oscars = [5, 11, 3, 8, 10] # 수치 데이터
 
 # 막대그래프 for 이산 데이터
 plt.bar(movies, num_oscars)
-# 변수 선언하여 매번 글꼴 지정하는 불편함 줄이자
-# keyword argument = 함수 내부에서 dict 취급
-font_name = {'fontname':'NanumGothic'}
-plt.title('아카데미 수상작', font_name)
+font_name = {'fontname':'NanumGothic'}  # 변수 선언하여 매번 글꼴 지정하는 불편함 줄이자
+plt.title('아카데미 수상작', font_name) # keyword argument = 함수 내부에서 dict 취급
 plt.xlabel('수상 횟수', font_name)
 plt.show() # 그래프를 닫아야 과정이 끝남 (exit code 0 출력)
 
