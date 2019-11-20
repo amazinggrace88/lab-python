@@ -31,9 +31,10 @@ plt.ylabel('daily minutes spent on the site')
 plt.show()
 
 
+
+
 for l, f, m in zip(labels, friends, minutes):
     plt.annotate(l, xy=(f, m), xytext=(5, -5), textcoords = 'offset points')
-
 # 그래프 왜곡된 경우 : scale 의 중요성
 math = [99, 90, 85, 97, 80]
 science = [100, 85, 60, 90, 70]
