@@ -3,6 +3,8 @@
 '''
 # 모듈을 만들어 import하기 위해 함수 부분과 테스트 부분을 나눈다.
 # module function
+
+
 def shape(matrix):
     """
     행렬의 행과 열의 개수를 tuple형태로 리턴
@@ -94,6 +96,7 @@ def transpose(matrix):
     :param matrix: n*m 행렬
     :return: m*n 행렬
     """
+# 방법1
     # m = []
     # num_rows = len(matrix)
     # num_cols = len(matrix[0])
@@ -103,10 +106,42 @@ def transpose(matrix):
     #         r.append(matrix[j][i])
     #     m.append(r)
     # return m
-# or
-    return [[matrix[j][i] for j in range(len(matrix))] for i in range(len(matrix[0]))]
-# or get_column으로 해보기~
+# 방법2
+#   return [[matrix[j][i] for j in range(len(matrix))]  for i in range(len(matrix[0]))]
+# 방법3
+    nrows, ncols = shape(matrix)
+    t = make_matrix(ncols, nrows, lambda x, y: matrix[y][x])
+    return t
 
+
+# 방법4
+def transpose(matrix):
+    """
+    2번째 함수 -> 전의 transpose 함수는 죽는다.
+
+    :param matrix:
+    :return:
+    """
+    # nrows = len(matrix)
+    # ncols = len(matrix[0])
+    # t = [] # 전치 행렬
+    # for j in range(ncols):  # 원본 행렬의 열 개수만큼 반복
+    #     # 원본 행렬의 열(column)을 전치행렬의 행으로 추가
+    #     t.append(get_column(matrix, j))
+    # return t
+# 방법5
+    return [get_column(matrix, j)for j in range(len(matrix[0]))]
+
+
+# 방법6
+def transpose(matrix):
+    # print('unpacking 연산자 *을 사용한 transpose')
+    # t = []
+    # for col in zip(*matrix): # col이 튜플이다. *A = [<1>, 2, 3] [<4>, 5, 6]
+    #     t.append(list(col))
+    # return t  # list 안에 튜플이 들어감. list()로 바꿀 수 있다.
+# or
+    return [list(col) for x in zip(*matrix)]
 
 # module test
 if __name__ == '__main__':
@@ -148,7 +183,23 @@ if __name__ == '__main__':
     result11 = transpose(B)
     print('transpose B matrix = ', result11)
 
+    # zip의 용도 for transpose
+    a = [1, 2, 3]
+    b = [4, 5, 6]
+    c = [7, 8, 9]
+    for x, y, z in zip(a, b, c):
+        print(x, y, z)
 
-# 연산자 설명
-# 2항 연산자 : 피연산자가 2개, 즉 값이 2개 들어가야 함
-# cf. ~항 : 피연산자를 의미함
+    # 연산자 설명
+    # 2항 연산자 : 피연산자가 2개, 즉 값이 2개 들어가야 함
+    # cf. ~항 : 피연산자를 의미함
+
+
+    # unpacking 연산자 : *
+    # fn(*args) => tuple처럼 취급하면 된다
+    print('A = ', A)
+    print('*A = ', *A)
+    print('B = ', B)
+    print('*B = ', *B)
+    # *A =  [1, 2, 3] [4, 5, 6] : []를 꺼내준다. 리스트를 풀어서 원소를 꺼내준다.
+    # zip(*A) => argument 2개 [],[]를 준 것과 같다.

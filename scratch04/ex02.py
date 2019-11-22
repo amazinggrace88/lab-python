@@ -7,11 +7,11 @@ import numpy as np
 
 
 # 버전 확인
-print('numpy version: ', np.__version__) # __version__
-print('numpy version2: ', np.version) # np.version 버전의 주소를 알려줌
+print('numpy version: ', np.__version__)  # __version__
+print('numpy version2: ', np.version)  # np.version 버전의 주소를 알려줌
 
 # 기존 - 파이썬 list 데이터 타입의 연산
-v = [1, 2] # list 라고 하는 class
+v = [1, 2]  # list 라고 하는 class
 print(type(v))
 print('v= ', v)
 
@@ -30,28 +30,30 @@ print(v)  # 완전히 같지는 않다. why? v 자체가 바뀐다.
 
 # numpy 패키지의 ndarray 타입을 사용
 v = np.array([1, 2])
-print('type: ', type(v)) # type : <class 'numpy.ndarray'>
+print('type: ', type(v))  # type : <class 'numpy.ndarray'>
 # ndarray (n-dimensional array n차원 배열: 배열안에 배열이 있으면 2차원, 배열 안에 배열 안에 배열이 있으면 3차원, ..)
-print(v) # list 처럼 생겼지만, class type이 다르다. (= 함수 다름/연산과정 다름)
-print('dimension: ', v.ndim) # 배열의 차원(number of dimension)
-print('shape: ', v.shape) # 1차원 배열인 경우 : 원소의 갯수를 의미함 (원소갯수, 생략).
+print(v)  # list 처럼 생겼지만, class type이 다르다. (= 함수 다름/연산과정 다름)
+print('dimension: ', v.ndim)  # 배열의 차원(number of dimension)
+print('shape: ', v.shape)  # 1차원 배열인 경우 : 원소의 갯수를 의미함 (원소갯수, 생략)
+
 
 v = np.array([
-    [1, 2], #행과 열을 가지고 있음
+    [1, 2],  # 행과 열을 가지고 있음
     [3, 4]
-]) #[] 배열
+])  # [] 배열
 print('type: ', type(v))
 print('dimension: ', v.ndim)
-print('shape: ', v.shape) # 배열이 (행2,열2) 모양.
+print('shape: ', v.shape)  # 배열이 (행2,열2) 모양.
+
 
 v = np.array([
     1,
-    [1, 2], #행과 열을 가지고 있음
+    [1, 2],  # 행과 열을 가지고 있음
     [3, 4]
 ])
 print('type: ', type(v))
 print('dimension: ', v.ndim)
-print('shape: ', v.shape) # 원소의 갯수 3개 - 배열 취급하지 않는다.
+print('shape: ', v.shape)  # 원소의 갯수 3개 - 배열 취급하지 않는다.
 # 큰 배열 안에 원소 3개, 1은 배열이 아니라 dimension을 가지지 않는다.
 # 배열 안에 있는 모든 원소가 모두 배열이어야 2차원 이상의 배열이 될 수 있다.
 
@@ -62,14 +64,12 @@ l = [
 ]
 print('list : ', l)
 # array    : 배열과 다름
-v = np.array([ # np.array()안에
-    [1, 2], # 파이썬의 기본타입인 list를 준다.
+v = np.array([  # np.array()안에
+    [1, 2],  # 파이썬의 기본타입인 list를 준다.
     [3, 4]
 ])
-print('ndarray: ', v) # -> for dataframe 데이터타입 바뀜/함수 바뀜/과정 바뀜
+print('ndarray: ', v)  # -> for dataframe 데이터타입 바뀜/함수 바뀜/과정 바뀜
 # 배열과 array는 둘 다 차원이 있다.
-
-
 
 # ndarray 타입을 이용한 벡터 연산
 v = np.array([1, 2, 3])
@@ -77,8 +77,8 @@ w = np.array([3, 4, 5])
 
 
 # 1. 덧셈
-vector_add = v + w # 두 벡터가 모양(shape)이 같을 때에만 연산
-print('vector add = ', vector_add) # column별로 계산하여 array 만듬
+vector_add = v + w  # 두 벡터가 모양(shape)이 같을 때에만 연산
+print('vector add = ', vector_add)  # column별로 계산하여 array 만듬
 
 
 # 2. 뺄셈
