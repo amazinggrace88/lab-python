@@ -25,8 +25,8 @@ print(1 == 2)
 print(1 != 2)
 
 x = 50
-print(0 < x < 100)  # alt+enter : 마법키 : 최적화해서 코드를 바꿔준다. 밑줄 : 경고의 의미 (더 최적화될 수 있다)
-print(x < 0 or x > 10)  # 한쪽 조건만 true면 true
+print(0 < x < 100)  # alt+enter : 마법키 (맥 option+enter) : 최적화해서 코드를 바꿔준다. 밑줄 : 경고의 의미 (더 최적화될 수 있다)
+print(x < 0 or x > 10)  # 한쪽 조건만 true 면 true
 
 # is 연산자 : 나중에..
 y = 100
