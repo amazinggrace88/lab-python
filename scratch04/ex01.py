@@ -47,7 +47,6 @@ def subtract(v, w):
     if len(v) != len(w):
         raise ValueError('v와 w는 같은 length를 가져야 합니다.')
     return [v_i - w_i for v_i, w_i in zip(v, w)]
-# or
 
 
 def subtract(v, w):
@@ -91,7 +90,7 @@ def vector_sum(vectors):  # vectors : 관습적으로 vectors 여러개
         if num_of_elements != len(vector):
             raise ValueError('모든 벡터는 길이가 같아야 함.')
 
-    result = [0 for _ in range(num_of_elements)]  # 0부터 더해나가야 하기 때문에 list에 0을 준다.
+    result = [0 for _ in range(num_of_elements)]  # 0부터 더해나가야 하기 때문에 길이가 num_of_elements인 list에 0을 준다.
     for i in range(num_of_elements):
         for vector in vectors:
             result[i] += vector[i]
@@ -149,6 +148,12 @@ def dot(v, w):
     return sum # for + sum 조합 : sigma 역할 \sum_{i}{x_i}*{y_i}
 
 
+def dot(v, w):  # 내적
+    if len(v) != len(w):
+        raise ValueError
+    return [v_i*w_i for v_i, w_i in zip(v, w)]
+
+
 def vector_mean(vectors):
     """
     주어진 벡터들의 리스트에서 각 항목별 평균으로 이루어진 벡터
@@ -165,6 +170,10 @@ def vector_mean(vectors):
 #   table 안에서 property = column = 성분 ex_국어점수.. 등등
 #   합계/평균은 각 변수별로 계산한다 ex_국어점수의 평균
 #   성분별 평균 = step1 성분별 합계 함수 만들기 step2 곱 함수 만들기 step3 두개 곱하여 평균 구하기 (과정 쪼개 생각)
+
+
+def vector_mean(vectors):
+    return scalar_multiply(1/len(vectors), vector_sum(vectors))
 
 
 '''
@@ -197,9 +206,10 @@ def magnitude(vector):
     """
     벡터의 크기를 리턴하는 함수
     math.sqrt(sum_of_squares)
+    (벡터는 크기와 방향을 가지며, 크기를 나타내는 것이 바로 벡터의 길이이다.)
 
-    :param vector:
-    :return:
+    :param vector
+    :return: 숫자
     """
     return mt.sqrt(sum_of_squares(vector))
 
@@ -235,10 +245,11 @@ if __name__ == '__main__':
     print('add = ',result1)
     print('subtract = ', result2)
     # 벡터가 다를 때 에러가 나는지도 테스트해봐야 함
+
     v = [1, 2]
     w = [1, 2, 3]
-    result3 = add(v, w)
-    print(result3)  # 우리가 원하는 결과가 아님! why? zip이라는 공통된 벡터까지만 뽑아내고 멈춰 에러를 발생시키지 않는다.
+    # result3 = add(v, w)
+    # print(result3)  # 우리가 원하는 결과가 아님! why? zip이라는 공통된 벡터까지만 뽑아내고 멈춰 에러를 발생시키지 않는다.
     # result4 = subtract(v, w)
     # print(result4) # solution : 에러 생성
     z = [[1,2], [3,4], [5,6]]
@@ -258,8 +269,8 @@ if __name__ == '__main__':
     x = dot(v, unit_x)
     y = dot(v, unit_y)
 
-    print('x = ', x)
-    print('y = ', y)
+    print('x dot = ', x)  # x 축 내적
+    print('y dot = ', y)  # y 축 내적
 
     result5 = vector_mean(dl)
     print('vector_mean = ', result5)

@@ -43,7 +43,7 @@ def experiment(type, n, t):
     :param t: 실험 횟수
     :return: 리스트
     """
-    cases = []  # 동전 던지기 실험 결과를 저장
+    cases = []  # 실험 결과를 저장
     for _ in range(t):  # 실험 횟수만큼 반복
         case = []  # 각 실험의 결과를 저장
         for _ in range(n):  # 실험 갯수만큼 반복
@@ -57,7 +57,7 @@ def experiment(type, n, t):
 coin_exp = experiment(coin, 2, 10_000)
 coin_exp_three = experiment(coin, 3, 10_000)
 dice_exp = experiment(dice, 2, 10_000)
-# print('coin experience = ', coin_exp[0:10])
+# print('coin experience = ', coin_exp[0:10])  # 10개씩 출력
 # print('three coin experience = ', coin_exp[0:10])
 # print('dice experience = ', dice_exp[1:10])
 
@@ -68,6 +68,8 @@ dice_event_counts = Counter(dice_exp)
 # print('event all coin counts = ', coin_event_counts)
 # print('event all three coin counts = ', coin_exp_three)
 # print('event all dice counts = ', dice_event_counts)
+# Counter (from collections import Counter)
+
 
 # hash algorithm : 정렬을 위한 알고리즘 (hashable)
 # list 의 list 의 갯수는 셀 수 없음! why? 그 안의 원소들이 바뀔 수 있다. 나중에 순서가 바뀔 수 있으므로 정렬할 수 없다.

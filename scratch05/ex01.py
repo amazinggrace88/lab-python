@@ -62,20 +62,16 @@ def quentile(x, p):
     :return: 해당 분위수(퍼센트)의 값
     """
     sort_x = sorted(x)
-    # p_index = int(p*len(x))
-    # return sort_x[p_index]
-# or
     return sort_x[int(p*len(x))]
 
 
 def quentile(x, p):
-    """
-    리스트 x의 p 분위에 속하는 값을 찾아서 리턴
+    sort_x = sorted(x)
+    p_index = int(p*len(x))
+    return sort_x[p_index]
 
-    :param x: 원소 n개인 1차원 리스트
-    :param p: 0~ 1.0 사이의 값 (0.25 1사분위수)
-    :return: 해당 분위수(퍼센트)의 값
-    """
+
+def quentile(x, p):
     n = len(x)
     sort_x = sorted(x)
     p_index = int(n * p)  # 해당 퍼센트의 인덱스 - 소수점은 버리겠다.(정수)
@@ -91,20 +87,25 @@ def mode(x):
     :return:
     """
     # step1. 생성자 만들기
-    n = Counter(x)  # 생성자 만들었다.
+    n = Counter(x)  # 생성자 만들었다. -> 생성자는 dict 형태
     # n.method : 변수.메소드 쓸 수 있음~ Counter 객체(인스턴스) 생성
-    print(n)  # dict 형태
-    print(n.keys(), n.values())  # n.keys() x의 데이터들이 인덱스가 되었음, n.values() 빈도수가 value가 됨
-    print(n.items())  # [(),()]
+    # print(n)  # dict 형태
+    # print(n.keys(), n.values())  # n.keys() x의 데이터들이 인덱스가 되었음, n.values() 빈도수가 value가 됨
+    # print(n.items())  # [(),()]
     # step2. 빈도수의 최댓값 찾기
     max_count = max(n.values())  # 빈도수의 최댓값
-    # freq = []  # 최빈값들을 저장할 리스트
-    # for val, cnt in counts.items():  # Counter 객체에 대해서 반복
-    #     if cnt == max_count:  # 빈도수가 최대 빈도수와 같으면
-    #         freq.append(val)  # 리스트에 저장
-    # return freq
-    return [val for val, cnt in counts.items()
+    return [val for val, cnt in n.items()
             if cnt == max_count]
+
+
+def mode(x):
+    n = Counter(x)
+    max_count = max(n.values())
+    freq = []  # 최빈값을 저장할 리스트
+    for val, cnt in n.items():  # Counter 객체에 대해서 반복
+        if cnt == max_count:  # 빈도수가 최대 빈도수와 같으면 리스트에 저장
+            freq.append(val)
+    return freq
 
 
 def data_range(x):  # python basic function range 구별 위해 data_붙임
@@ -115,9 +116,11 @@ def data_range(x):  # python basic function range 구별 위해 data_붙임
     :return: 리스트의 최댓값 - 리스트의 최솟값
     """
     return max(x) - min(x)  # 정렬 2번
-# or
-    # sorted_x = sorted(x)  # 정렬 1번 - 더 빠르다는 장점
-    # return sorted_x[len(x)-1] - sorted_x[0]  # 전체길이 - 1 = 마지막 인덱스
+
+
+def data_range(x):
+    sorted_x = sorted(x)  # 정렬 1번 - 더 빠르다는 장점
+    return sorted_x[len(x)-1] - sorted_x[0]  # 전체길이 - 1 = 마지막 인덱스
 
 
 def de_mean(x):
@@ -128,7 +131,7 @@ def de_mean(x):
     :return:
     """
     mu = mean(x)
-    return [x_i - mu for x_i in x]  # \sum (x_i - M)
+    return [x_i - mu for x_i in x]  # \sigma (x_i - M)
 
 
 def variance(x):
@@ -141,7 +144,7 @@ def variance(x):
     sum = 0
     for i in x:
         sum += (i - mean(x))**2
-    return sum / ( len(x) - 1 )
+    return sum / (len(x) - 1)
 
 
 def variance(x):
@@ -157,24 +160,12 @@ def variance(x):
 
 
 def variance(x):
-    """
-    (x1 - mean(x))**2 + (x2 - mean(x))**2 + ... (xn - mean(x))**2 / (n-1)
-
-    :param x: 원소 n개인 1차원 리스트
-    :return: 분산
-    """
     n = len(x)
     deviations = de_mean(x)  # 편차들의 리스트
     return sum([d**2 for d in deviations]) / (n-1)
 
 
 def variance(x):
-    """
-    (x1 - mean(x))**2 + (x2 - mean(x))**2 + ... (xn - mean(x))**2 / (n-1)
-
-    :param x: 원소 n개인 1차원 리스트
-    :return: 분산
-    """
     # scratch04\ex01의 dot(v,v) 자기자신을 곱하여 더한 것과 같다. " \sigma (x_i - M)**2 "
     # from lab_python.scratch04.ex01 import dot을 맨 위에 써서 import시켜준다.
     n = len(x)
@@ -212,14 +203,6 @@ def covariance(x, y):
 
 
 def covariance(x, y):
-    """
-    공분산(covariance)
-    cov = sum((x_i - x_bar)(y_i - y_bar)) / (n-1)
-
-    :param x: 원소 n개인 1차원 리스트
-    :param y: 원소 n개인 1차원 리스트
-    :return: 공분산
-    """
     x_bar = mean(x)  # x의 평균
     y_bar = mean(y)  # y의 평균
     x_deviations = [x_i - x_bar for x_i in x]
@@ -233,9 +216,9 @@ def correlation(x, y):
     상관계수(correlation)
     Corr = cov(x, y) / (sd(x) * sd(y))
 
-    :param x:
-    :param y:
-    :return:
+    :param x: 원소 n개인 1차원 리스트
+    :param y: 원소 n개인 1차원 리스트
+    :return: 상관계수
     """
     sd_x = standard_deviation(x)
     sd_y = standard_deviation(y)
@@ -254,6 +237,7 @@ if __name__ == '__main__':
     print('mean = ', mean(A))
     print('median = ', median(A))
     print('quentile = ', quentile(A, 0.25))
+    print('mode = ', mode(A))  # 1개씩 밖에 없으므로 모든 변수 출력
     print('variance = ', variance(A))
     print('standard deviation = ', standard_deviation(A))
 
@@ -261,6 +245,7 @@ if __name__ == '__main__':
     print(B)
     print('mean = ', mean(B))
     print('median = ', median(B))
+    print('mode = ', mode(B))  # 1개씩 밖에 없으므로 모든 변수 출력
     print('quentile = ', quentile(B, 0.25))
     print('variance = ', variance(B))
     print('standard deviation = ', standard_deviation(B))

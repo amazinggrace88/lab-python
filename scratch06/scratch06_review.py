@@ -9,7 +9,7 @@ def experiment(type, n, t):
     """
     실험의 결과를 [ [ [], [], [] ],/  [ [], [], [] ],/  [ [], [], [] ] ]
 
-    :param type: 실험 타입(동전던지기 or 주사위 던지기, ..)
+    :param type: 실험 타입 (동전던지기 or 주사위 던지기, ..)
     :param n: 실험의 개수
     :param t: 실험 횟수
     :return: 리스트
