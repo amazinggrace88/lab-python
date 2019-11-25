@@ -32,7 +32,7 @@ def add(v, w):
     """
     if len(v) != len(w):
         raise ValueError('v와 w는 같은 length를 가져야 합니다.')
-    return [v_i + w_i for v_i, w_i in zip(v, w)] # v_i : v의 i번째
+    return [v_i + w_i for v_i, w_i in zip(v, w)]  # v_i : v의 i번째
 
 
 def subtract(v, w):
@@ -47,17 +47,16 @@ def subtract(v, w):
     if len(v) != len(w):
         raise ValueError('v와 w는 같은 length를 가져야 합니다.')
     return [v_i - w_i for v_i, w_i in zip(v, w)]
-# or
-'''
+
+
+def subtract(v, w):
     result = []
     for i in range(len(v)):
         result.append(v[i] + w[i])
     return result
-    
-# vector의 수가 다른 경우 v[i] 순서까지만 출력됨
-'''
 
-def vector_sum(vectors): #vectors : 관습적으로 vectors 여러개
+
+def vector_sum(vectors): # vectors : 관습적으로 vectors 여러개
     """
     모든 벡터들에서 각 성분별 합을 더하기를 수행한다.
     ex) vector_sum([1,2], [3,4], [5,6]) = [9, 12]를 반환한다
@@ -72,15 +71,29 @@ def vector_sum(vectors): #vectors : 관습적으로 vectors 여러개
         if num_of_elements != len(vector):
             raise ValueError('모든 벡터는 길이가 같아야 함.')
 
-    #
-    # result = [0 for _ in range(num_of_elements)] # 0부터 더해나가야 하기 때문에 list에 0을 준다.
-    # for i in range(num_of_elements):
-    #     for vector in vectors:
-    #         result[i] += vector[i]
-    # return result
-    result = vectors[0] #[] 첫번째 리스트 전체
+    result = vectors[0]  # [] 첫번째 리스트 전체
     for vector in vectors[1:]:
-        result = add(result, vector) #result += 와 같은 격..
+        result = add(result, vector)  # result += 와 같은 격..
+    return result
+
+
+def vector_sum(vectors):  # vectors : 관습적으로 vectors 여러개
+    """
+    모든 벡터들에서 각 성분별 합을 더하기를 수행한다.
+    ex) vector_sum([1,2], [3,4], [5,6]) = [9, 12]를 반환한다
+
+    :param vectors: n차원 벡터들의 리스트 (2차원 리스트 [[], []])
+    :return: n차원 벡터
+    """
+    num_of_elements = len(vectors[0])  # 서로 같은지 확인하기 위해서 [1, 2]의 원소의 갯수를 센다.
+    for vector in vectors[1:]:
+        if num_of_elements != len(vector):
+            raise ValueError('모든 벡터는 길이가 같아야 함.')
+
+    result = [0 for _ in range(num_of_elements)]  # 0부터 더해나가야 하기 때문에 길이가 num_of_elements인 list에 0을 준다.
+    for i in range(num_of_elements):
+        for vector in vectors:
+            result[i] += vector[i]
     return result
 
 
@@ -98,6 +111,8 @@ c*(x1, y1)
 즉, (x1, y1)에서 y축으로 1만큼의 크기를 가지는 그림자는 y1이다.
 '''
 # 1) scalar product
+
+
 def scalar_multiply(c, vector):
     """
     c * [x1, x2, x3,..] = [c*x1, c*x2, c*x3,...]
@@ -106,12 +121,15 @@ def scalar_multiply(c, vector):
     :param vector: n차원 벡터 (length가 n인 1차원 리스트)
     :return: n차원 벡터
     """
-    # result = []
-    # for i in vector:
-    #     result.append(c*i)
-    # return result
-# or
     return [c * i for i in vector]
+
+
+def scalar_multiply(c, vector):
+    result = []
+    for i in vector:
+        result.append(c*i)
+    return result
+
 
 def dot(v, w):
     """
@@ -128,6 +146,12 @@ def dot(v, w):
     for v_i, w_i in zip(v, w):
         sum += v_i*w_i
     return sum # for + sum 조합 : sigma 역할 \sum_{i}{x_i}*{y_i}
+
+
+def dot(v, w):  # 내적
+    if len(v) != len(w):
+        raise ValueError
+    return [v_i*w_i for v_i, w_i in zip(v, w)]
 
 
 def vector_mean(vectors):
@@ -147,13 +171,19 @@ def vector_mean(vectors):
 #   합계/평균은 각 변수별로 계산한다 ex_국어점수의 평균
 #   성분별 평균 = step1 성분별 합계 함수 만들기 step2 곱 함수 만들기 step3 두개 곱하여 평균 구하기 (과정 쪼개 생각)
 
+
+def vector_mean(vectors):
+    return scalar_multiply(1/len(vectors), vector_sum(vectors))
+
+
 '''
 벡터의 크기
 : 직선의 길이 (2차원의 경우)
 = sqrt(x**2 + y**2) (2차원의 경우)
 '''
-
 # step1. sum_of_squares
+
+
 def sum_of_squares(vector):
     """
     vector = [x1, x2, ... , xn] n차원 벡터일 때
@@ -162,23 +192,26 @@ def sum_of_squares(vector):
     :param vector: n차원 벡터
     :return: 숫자
     """
-    # sum = 0
-    # for i in vector:
-    #     sum += i**2 # sum += i * i ( = v_i*w_i 내적 )
-    # return sum
-# or
     return dot(vector, vector)
+
+
+def sum_of_squares(vector):
+    s_sum = 0
+    for i in vector:
+        s_sum += i**2
+    return s_sum
+
 
 def magnitude(vector):
     """
     벡터의 크기를 리턴하는 함수
     math.sqrt(sum_of_squares)
+    (벡터는 크기와 방향을 가지며, 크기를 나타내는 것이 바로 벡터의 길이이다.)
 
-    :param vector:
-    :return:
+    :param vector
+    :return: 숫자
     """
     return mt.sqrt(sum_of_squares(vector))
-# alt + enter : 만능키
 
 
 def squared_distance(v, w):
@@ -212,17 +245,18 @@ if __name__ == '__main__':
     print('add = ',result1)
     print('subtract = ', result2)
     # 벡터가 다를 때 에러가 나는지도 테스트해봐야 함
-    # v = [1, 2]
-    # w = [1, 2, 3]
+
+    v = [1, 2]
+    w = [1, 2, 3]
     # result3 = add(v, w)
-    # print(result3) # 우리가 원하는 결과가 아님! why? zip이라는 공통된 벡터까지만 뽑아내고 멈춰 에러를 발생시키지 않는다.
+    # print(result3)  # 우리가 원하는 결과가 아님! why? zip이라는 공통된 벡터까지만 뽑아내고 멈춰 에러를 발생시키지 않는다.
     # result4 = subtract(v, w)
     # print(result4) # solution : 에러 생성
     z = [[1,2], [3,4], [5,6]]
     v = [10, 20]
     w = [15, 25]
-    unit_x = [1, 0] # x축 단위 벡터
-    unit_y = [0, 1] # y축 단위 벡터
+    unit_x = [1, 0]  # x축 단위 벡터
+    unit_y = [0, 1]  # y축 단위 벡터
     dl = [[1, 2], [3, 4]]
     sum_list = [1, 1]
 
@@ -235,8 +269,8 @@ if __name__ == '__main__':
     x = dot(v, unit_x)
     y = dot(v, unit_y)
 
-    print('x = ', x)
-    print('y = ', y)
+    print('x dot = ', x)  # x 축 내적
+    print('y dot = ', y)  # y 축 내적
 
     result5 = vector_mean(dl)
     print('vector_mean = ', result5)
