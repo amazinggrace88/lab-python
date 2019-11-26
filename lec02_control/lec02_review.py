@@ -43,3 +43,16 @@ print()
 
 
 # for02
+'''
+assignment
+'''
+#난수 선언(0<=x<=100)
+for i in range(10):
+    x = np.random.randint(0, 101) #100까지 나와야 하므로
+    scores.append(x)
+print(scores)
+# i 는 for 문에서 사용되지 않지만 문법 때문에 필요하다. (비워둘 수는 없으니 _를 쓰는 것을 허용함)
+# x를 합쳐주자.
+for _ in range(10):
+    scores.append(np.random.randit(0, 101))
+print(scores)
