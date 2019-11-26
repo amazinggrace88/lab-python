@@ -10,7 +10,7 @@ scores = []
 # scores[1] = 99 error
 # scores.append() 로만 추가 가능
 
-#난수 선언(0<=x<=100)
+# 난수 선언(0<=x<=100)
 for i in range(10):
     x = np.random.randint(0, 101) #100까지 나와야 하므로
     scores.append(x)
@@ -21,7 +21,7 @@ for _ in range(10):
     scores.append(np.random.randint(0, 101))
 print(scores)
 
-#list에 저장된 시험점수 10개의 총점을 계산, 출력
+# list에 저장된 시험점수 10개의 총점을 계산, 출력
 total = 0
 for score in scores:
     total += score #더해야 하기 때문에, 더할 대상이 필요하므로 total 을 먼저 지정해주어야 함.

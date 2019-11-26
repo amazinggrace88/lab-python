@@ -130,14 +130,13 @@ print('P(A, C) = P(A) * P(C) 이 성립하지 않으면, 두 사건은 독립 �
 child = ('boy', 'girl')
 trials = 10_000
 
-event_a = 0
-event_b = 0
-event_a_b = 0
-event_c = 0
-event_a_c = 0
-
 
 def baby_bg():
+    event_a = 0
+    event_b = 0
+    event_a_b = 0
+    event_c = 0
+    event_a_c = 0
     for _ in range(trials):
         first = random.choice(child)
         second = random.choice(child)
@@ -156,6 +155,8 @@ def baby_bg():
     return event_a, event_a_b, event_a_c, event_b, event_c
 
 # 함수 리턴값이 여러개이면, 여러개 리턴값을 지정해주고 함수를 호출한다.
+
+
 event_a, event_a_b, event_a_c, event_b, event_c = baby_bg()
 
 p_a = event_a / trials

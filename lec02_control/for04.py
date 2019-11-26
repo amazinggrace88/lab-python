@@ -3,7 +3,7 @@ for-in 구문 연습 2
 '''
 
 
-# if in if
+# if in for
 for i in range(1, 10):
     if i == 5:
         continue  # for loop 시작점으로 올라감.(if문 안에 있는 밑의 구문들을 건너뛰고 다시 시작점으로 올라가서 계속 한다)
@@ -17,7 +17,7 @@ print()
 # f[n] = f[n-1] + f[n-2], n >= 2
 f = [0, 1]
 for i in range(2, 20):
-    f.append(f[i-1] + f[i-2]) #x를 합쳐주어 넣어주었다. 원래 x = f[i-1] + f[i-2] / f.append(x)
+    f.append(f[i-1] + f[i-2])  # x를 합쳐주어 넣어주었다. 원래 x = f[i-1] + f[i-2] / f.append(x)
 print('fibonacci sequence : ', f)
 # why .extend()는 안될까 ? extend(반복가능한 변수 = 즉, list ex) [4, 5]안의 값을 하나씩 append 하는 작업을 반복한다. )
 
@@ -25,16 +25,6 @@ print('fibonacci sequence : ', f)
 # 소수(prime number) : 1과 자기자신으로만 나누어지는 정수
 # 2~10까지의 정수들 중에서 소수를 찾아서 출력
 # 암호화와 복호화에 응용된다.
-for i in range(2, 101):
-    if i // 2 == 1 and i % 2 == 0:
-        print('prime number : ', i)
-    if i // 3 == 1 and i % 3 == 0:
-        print('prime number : ', i)
-    if i // 5 == 1 and i % 5 == 0:
-        print('prime number : ', i)
-    if i // 7 == 1 and i % 7 == 0:
-        print('prime number : ', i) # 다른 소수들 11, 13은 구별할 수 없음!
-# or
 for n in range(2, 11):
     isPrime = True
     for divider in range(2, n): # 나눠주는 숫자

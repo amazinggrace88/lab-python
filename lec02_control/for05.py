@@ -65,6 +65,14 @@ print(dice2)
 
 # 주사위 (x, x)이면 멈추는 경우의 수 ex) (2, 2)이면 (3, 1)로 넘어감
 # (x, y) if x >= y
+# 나의 정답
+for i in range(1, 7):
+    for j in range(1, 7):
+        print(i, j)
+        if i == j:
+            print('주사위가 똑같습니다!')
+            break
+# or
 dice3 = []
 for x in range(1, 7):
     for y in range(1, 7):

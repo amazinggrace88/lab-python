@@ -2,8 +2,7 @@
 python 에서 True / False 판별
 1) 숫자 타입인 경우 0 False, 0 이외의 숫자는 True 취급(1은 True)
 2) 숫자 이외의 타입인 경우, 비어있는 값('', "", [], {}, (),..)은 False, 그 이외의 다른 값들은 True 취급
-3)
-4)
+
 값이 있으면 true, 값이 없으면 false~~
 '''
 
@@ -17,7 +16,7 @@ else:
 # if true 면 if 문을 출력한다.
 
 # 2) 숫자 이외의 타입인 경우, 비어있는 값('', "", [], {}, (),..)은 False, 그 이외의 다른 값들은 True 취급
-my_list = [] # 비어있는 list
+my_list = []  # 비어있는 list
 if my_list:
     print(my_list)
 else:

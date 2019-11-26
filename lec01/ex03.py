@@ -10,6 +10,8 @@ python datatype
 6. 집합 : set
 7. none : 값이 없음을 나타내는 데이터 타입 (값을 저장하지 않는다는 의미 - stack에 주소값이 없다.(0000) : null값과 같다.
 """
+# type() - datatype 출력
+# id() - 변수의 주소 출력
 
 # 숫자타입
 intVal = 123

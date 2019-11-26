@@ -44,7 +44,7 @@ print(s[1])
 # slicing
 print(s[0:2])  # 범위 연산자 ':'
 print(s[1:5])
-print(s[0:])  # 끝 인덱스 없는 경우 : 배열의 끝까지
-print(s[:3])  # 앞 인덱스 없는 경우 : 배열의 처음부터
+print(s[0:])  # 끝 인덱스 없는 경우 : 배열의 끝까지 *****
+print(s[:3])  # 앞 인덱스 없는 경우 : 배열의 처음부터 *****
 print(s[-3:-1])  # -5 h -4 e -3 l -2 l -1 o 0 / 뒤에서부터 0 깃발도 있음
 # x:y  - from x(포함, include) to y (미포함, exclude)

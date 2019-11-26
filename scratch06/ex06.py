@@ -43,7 +43,7 @@ def uniform_cdf(x):
 def normal_pdf(x, mu=0.0, sigma=1.0):
     """평균이 mu이고, 표준편차가 sigma인 정규분포의 확률 밀도 함수"""
     sqrt_two_pi = math.sqrt(2 * math.pi)  # sqrt(2 * 3.14(pi))
-    return (math.exp(-(x-mu)**2/ 2/ sigma ** 2) / (sqrt_two_pi * sigma))
+    return (math.exp(-(x-mu)**2/ (2/ (sigma ** 2)) / (sqrt_two_pi * sigma)))
 
 
 # 정규분포의 누적확률변수(Cumulative Distribution Function)
