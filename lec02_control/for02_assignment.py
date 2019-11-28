@@ -40,12 +40,12 @@ print(f'평균2 : {np.mean(scores)}')
 print('최대값 : ', max(scores))
 print('최소값 : ', min(scores))
 # or
-max_score = scores[0] # scores 의 첫번째 값을 max 로 두겠다.
+max_score = scores[0]  # scores 의 첫번째 값을 max 로 두겠다.
 min_score = scores[0]
 for score in scores:
-    if score > max_score: #list에서 현재 최대값보다 더 큰 수를 찾은 경우
+    if score > max_score:  # list에서 현재 최대값보다 더 큰 수를 찾은 경우
         max_score = score
-    if score < min_score: #list에서 현재 최소값보다 더 작은 수를 찾은 경우 #elif하면 안됨! 계속 if문에서 반복, 모든 값 각각 if문에서 반복.
+    if score < min_score:  # list에서 현재 최소값보다 더 작은 수를 찾은 경우 #elif하면 안됨! 계속 if문에서 반복, 모든 값 각각 if문에서 반복.
         min_score = score
 print('최대값 : ', max_score, '최소값 : ', min_score)
 # cf. sorted() 정렬함수
