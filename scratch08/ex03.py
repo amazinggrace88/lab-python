@@ -1,7 +1,7 @@
 '''
 n차원(3차원 이상)의 경사 하강법 - using 편미분
 '''
-from lab_python.scratch04.ex01 import scalar_multiply, add
+from lab_python.scratch04.ex01 import scalar_multiply, add, distance
 
 
 def partial_difference_quotient(f, v, i, h=0.001):
@@ -9,6 +9,8 @@ def partial_difference_quotient(f, v, i, h=0.001):
     함수 f의 i번째 편도함수가 v에서 가지는 값
     함수 z = f(x,y)
     편미분 = (f([x1, x2, .. , xi+h, .. xn]) - f([x1, x2, .. xn])) / h
+    i 번째 방향에 대한 기울기
+    difference_quotient와 같다.
 
     :param f: f(vector) = float(숫자) 인 함수이름
     :param v: 기울기(gradient)를 계산할 위치 = n차원이므로 벡터(리스트)
@@ -33,6 +35,7 @@ def partial_difference_quotient(f, v, i, h=0.001):
 def estimate_gradient(f, v, h=0.001):
     """
     gradient의 근사값
+    도함수의 리스트
     [∂f/∂x_1, ∂f/∂x_2, ... ∂f/∂x_n] => ∂f(partial) 즉, 편미분값
 
     :param f: f(vector) = float 함수
@@ -46,6 +49,7 @@ def estimate_gradient(f, v, h=0.001):
 def gradient_step(v, gradient, step=-0.1):
     """
     [xi + step * ∂f/∂x_i]
+    move 의 역할
 
     :param v: 이동 전 점의 위치 즉, xi
     :param gradient: 점 v에서의 기울기 (∂f/∂x_i)
@@ -53,5 +57,64 @@ def gradient_step(v, gradient, step=-0.1):
     :return: 기울기의 방향으로 이동한 점의 위치(새로운 점의 위치)
     """
     increment = scalar_multiply(step, gradient)
-    return add(v, increment)  # vector add
+    return add(v, increment)  # vector add scratch04에서 만든 함수 (확인하기 - ctrl+click)
+
+
+if __name__ == '__main__':
+    import random
+    # f([x1, x2]) = x1 ** 2 + x2 ** 2 의 최솟값: (0, 0)
+    # g([x1, x2]) = (x1 - 1) ** 2 + (x2 + 1) ** 2 의 최솟값: (1, -1)
+
+
+    def f(v):
+        """v = [x1, x2]로 이루어져 있는 벡터라고 가정함"""
+        return v[0]**2 + v[1]**2
+
+
+    def g(x):
+        """"""
+        return ((v[0]-1)**2 + (v[1]+1)**2)
+
+
+    random.seed(1129)
+    # 기울기를 계산할 최초의 (x1, y1) 좌표를 임의로 선택
+    init_v = [random.randint(-10, 10), random.randint(-10, 10)]
+    print('init_v = ', init_v)
+    
+    # 반복문을 종료할 임계값
+    tolerance = 0.000001
+
+    count = 0
+    while True:  # 무한 루프
+        count += 1
+        # 선택한 좌표(x1, y1), (x2, y2)에서 기울기 계산
+        gradient = estimate_gradient(f, init_v)
+        # 다음 좌표로 점을 이동시킴
+        next_v = gradient_step(init_v, gradient, step=-0.2)
+        print(f'{count}: next_v = {next_v}')
+        # (이동 후 좌표 - 이동 전 좌표) 거리 계산
+        if distance(init_v, next_v) < tolerance:
+            # 이동 거리가 임계값 보다 작다면 반복문을 종료 (break)
+            break
+        else:
+            # 이동 후 좌표가 새로운 이동 전 좌표로 변수 바뀜
+            init_v = next_v
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

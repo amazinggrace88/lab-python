@@ -16,14 +16,11 @@ ex_likelihood(우도)를 최대화 - 최댓값을 찾는다
 --------------------------------------------------------------
 '''
 import random
-
 import matplotlib.pyplot as plt
-
-
-# 2차 함수의 최소(최대)값 찾기
 import numpy as np
 
 
+# 2차 함수의 최소(최대)값 찾기
 def f(x):
     return x ** 2
 
@@ -93,7 +90,7 @@ if __name__ == '__main__':
     plt.legend()
     plt.show()
 
-    # 실제기울기(f_derivative)와 기울기 근사값(difference_quotient)의 비교 : 모든 점에서의 기울기 출력
+    # 실제 기울기(f_derivative)와 기울기 근사값(difference_quotient)의 비교 : 모든 점에서의 기울기 출력
     xs = [x for x in range(-10, 11)]
     actuals = [f_derivative(x) for x in xs]  # 기울기를 모아둔 [list]를 만들었다.
     estimates_1 = [difference_quotient(f, x, h=1) for x in xs]
