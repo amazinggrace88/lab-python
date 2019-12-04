@@ -9,7 +9,7 @@ import lab_python.lec08_database.oracle_config as cfg
 with cx_Oracle.connect(cfg.user, cfg.pwd, cfg.dsn) as connection:
     # SQL 문장 실행, 결과 분석할 수 있는 cursor 객체를 생성
     with connection.cursor() as cursor:
-        sql_insert = "insert into dept2(deptno, dname, loc) values(91, '강의장10', 'Seoul')" # 안에 작은 따옴표 있으므로 바깥쪽은 큰 따옴표
+        sql_insert = "insert into dept2(deptno, dname, loc) values(91, '강의장10', 'Seoul')"  # 안에 작은 따옴표 있으므로 바깥쪽은 큰 따옴표
         # or sql_insert = "insert into dept2 values(91, '강의장10', 'Seoul')"
         cursor.execute(sql_insert)
         # DML (Data Manipulation Language) : INSERT UPDATE DELETE
