@@ -28,16 +28,16 @@ print(file_path)
 file_path = os.path.join('.', 'temp', 'temp.txt')
 print(file_path)
 
-print(os.path.isdir('.'))
+print(os.path.isdir('.'))  # --> argument 로 확인을 원하는 파일 혹은 디렉토리의 경로를 넣어주면 되고, 그 결과로 존재할 경우 True, 존재하지 않을 경우 False 를 return
 print(os.path.isdir('file01.py'))  # .\\file01.py
 print(os.path.isfile('.'))
 print(os.path.isfile('file01.py'))
 
-with os.scandir('.') as my_dir:
+with os.scandir('.') as my_dir:  # ?
     for entry in my_dir:
         print(entry.name, '\t', entry.is_file())
 
-# 파일(디렉토리) 이름 변경:
+# 파일(디렉토리) 이름 변경: --> 파일과 디렉토리 둘 다 똑같은건가?
 # os.rename(원본이름, 바꿀이름)
 # 원본 파일(디렉토리)가 없는 경우에 에러 발생
 try:
@@ -45,7 +45,7 @@ try:
 except FileNotFoundError:
     print('temp 폴더가 없음')
 
-# 파일 삭제: os.remove(삭제할 파일 이름)
+# 파일 삭제: os.remove(삭제할 파일 이름)  --> 파일<-> 디렉토리(폴더)
 # 디렉토리 삭제: os.rmdir(삭제할 폴더 이름)
 try:
     os.rmdir('test')

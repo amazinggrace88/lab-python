@@ -9,13 +9,12 @@ print(content)
 # close
 f.close()
 
+# --->? line 이 두 개라서 무슨 말인지 모르겠다.
 f = open('test2.txt', mode='r', encoding='utf-8')
-# readline(): 파일에서 한줄씩 읽음
-# 줄바꿈 문자('\n')까지 읽음!
-line = f.readline()
-# str 클래스의  strip() 메소드:
-#   문자열의 시작과 끝에 있는 공백 문자들을 제거
-line = line.strip()
+line = f.readline()  # readline()
+# : 파일에서 한줄씩 읽음 / 줄바꿈 문자('\n')까지 읽음!
+line = line.strip()  # str 클래스의 strip() 메소드
+# : 문자열의 시작과 끝에 있는 공백 문자들을 제거
 print(f'line: {line}, length: {len(line)}')
 line = f.readline().strip()
 print(f'line: {line}, length: {len(line)}')

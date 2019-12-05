@@ -26,13 +26,10 @@ import pandas as pd
 gapminder = pd.read_csv('gapminder.tsv', sep='\t', encoding='UTF-8')
 # sep= 꼭꼭 \t 추가한다. (default 값: , )
 
-
-
 # DataFrame.shape: (row 개수, column 개수)
 print(gapminder.shape)
 nrows, ncols = gapminder.shape
 print(f'nrows={nrows}, ncols={ncols}')
-
 print('shape:', gapminder.shape)   # DataFrame의 행과 열의 개수 확인
 
 # DataFrame.head(n): 첫 n개의 row를 출력. n의 기본값은 5.
@@ -40,8 +37,6 @@ print(gapminder.head())
 
 # DataFrame.tail(n): 마지막 n개의 row를 출력. n의 기본값은 5.
 print(gapminder.tail())
-
-
 
 # 행 인덱스를 이용한 출력
 # DataFrame.iloc[row index, column index]
@@ -56,21 +51,16 @@ print(gapminder.columns)
 # DataFrame.dtypes: pandas.Index 클래스 객체.(각 컬럼의 이름과 데이터 타입을 저장하고 있는 프로퍼티) - gapminder의 각 컬럼의 데이터 타입들을 출력
 print('data types', gapminder.dtypes)
 
-
-
 # pandas.read_csv() 함수는 파일의 문자열들을 타입에 맞게끔 변환하는 기능을 가지고 있음.
 # pandas 데이터 타입: object(문자열), int64(64비트 정수), float64(64비트 실수) (# 1 byte = 8 bits)
 # 파이썬 의 데이터 타입
 # 더 많은 용량을 사용해서 정수를 사용한다. 64 바이트 = 8 비트, 그러니까 파이썬은 정수, 실수 모두 8 비트를 사용해서 저장한다
 # 보통 C와 같은 다른 언어는 정수는 4비트를 사용해서 저장. 결론적으로 파이썬은 큰 정수까지 저장할 수 있는 타입이라고 생각해주면 된다
-
 print(gapminder.dtypes)
 
 # DataFrame[column names]: 데이터 프레임에서 컬럼을 선택.(# 행번호 주지 않고 컬럼 이름들만 주는 가장 간단한 방법)
 col_names = ['country', 'lifeExp', 'gdpPercap']
 print(gapminder[col_names])
-
-
 
 # 데이터 프레임에서 특정 행을 선택하는 방법
 # 1) index로 선택:
@@ -88,8 +78,6 @@ print(gapminder.iloc[[0, 9, 999]])
 print(gapminder.loc[840:851, ['country', 'lifeExp', 'gdpPercap']])  # Teacher's solutionn # N:M 으로 인덱스를 주면 이름을 주는거니까 그대로 출력해준다
 print(gapminder.iloc[840:852, [0, 3, 5]])  # iloc 는 N:M 으로 인덱스를 줄 경우 이상 미만이라서 M + 1의 값을 줘야한다
 
-
-
 # 2) 특정 행을 직접 선택:
 # DataFrame.iloc: 특정행을 선택하는 방법
 # DataFrame 에서 행 인덱스가 0, 99, 999번인 행들을 출력
@@ -101,8 +89,6 @@ row_indices = [0, 9, 99]
 print('row_indices =', [gapminder.iloc[row_indices]])
 # OR
 print("row_indices' =", gapminder.iloc[[0, 9, 99]])
-
-
 
 # 연도별 기대수명(lifeExp)의 평균
 gapminder_by_year = gapminder.groupby('year')
@@ -121,8 +107,6 @@ print(gapminder_by_year_continent['lifeExp'].mean())
 
 # 1차원 데이터를 series라고 부르고, series 의 집합이 데이터 프레임이 된다
 
-
-
 # 연도별 기대수명 그래프
 # df.groupby(year).mean(lifeExp)
 year_lifeExp = gapminder.groupby('year')['lifeExp'].mean()
@@ -130,8 +114,6 @@ print(year_lifeExp)
 plt.plot(year_lifeExp)
 plt.title('lifeExp by year')
 plt.show()
-
-
 
 # 연도별 전세계 인구수(pop)를 그래프
 year_pop = gapminder.groupby('year')['pop'].sum()

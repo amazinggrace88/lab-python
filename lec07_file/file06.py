@@ -20,5 +20,3 @@ with open(file_name, mode='w', encoding='utf-8') as output_file:
     for i in range(1, 11):
         line = f'{i},{np.random.randint(0, 101)},{np.random.randint(0, 101)},{np.random.randint(0, 101)},{np.random.randint(0, 101)}\n'
         output_file.write(line)
-
-

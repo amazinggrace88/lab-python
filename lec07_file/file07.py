@@ -53,8 +53,7 @@ def get_sum_mean(data: list, col: int) -> tuple:
     """
     column_sum = 0
     for row in data:  # 2차원 리스트의 각 행들에 대해서 반복
-        column_sum += int(row[col])  # 그 행의 col 위치에 있는 아이템을 int로 변환 후 더함.
-
+        column_sum += int(row[col])  # 그 행의 col 위치에 있는 아이템을 int 로 변환 후 더함.
     column_mean = column_sum / len(data)  # 평균 계산
 
     return column_sum, column_mean

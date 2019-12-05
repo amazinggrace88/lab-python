@@ -1,5 +1,9 @@
 '''
 실습 : table(table, cursor):
+
+csv 파일을 합쳐주는 두 가지 방법
+1 concat : 컬럼 이름들이 동일하다는 가정하에 테이블을 밑으로 합치는 방법(위+아래)
+2 merge : 겹치는 컬럼을 찾아서 테이블을 옆으로 합치는 방법(왼쪽+오른쪽)
 '''
 import cx_Oracle
 import pandas as pd
@@ -139,6 +143,10 @@ if __name__ == '__main__':
             emp_emp_right = pd.merge(emp_df, emp_df, how='right', left_on='MGR', right_on='EMPNO')
             print('emp_emp_right====================\n')
             print(emp_emp_right)
+            # merge 에서 select 를 바로 할 수는 없다
+            # sql - select 와 같은 문장: df['column_name']
+            # left table - x, right table - y 가 된다.
+            print(emp_emp_right[['EMPNO_x', 'ENAME_x', 'MGR_x', 'EMPNO_y', 'ENAME_y']])
 
 '''
 <대문자 변환 방법 - python> 
