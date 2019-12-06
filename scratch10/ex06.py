@@ -1,3 +1,8 @@
+"""
+agg 함수 정리
+
+"""
+
 import numpy as np
 import pandas as pd
 
@@ -27,7 +32,7 @@ if __name__ == '__main__':
     # 통계량(statistics) - sum, mean, var, stddev, min, max, median, .. (len 도 들어가는지 여쭙기)
     # 집계가 목적이므로 데이터가 여러개 있어야 한다. / 데이터 타입이 숫자 타입인 행/열에만 함수를 적용시켜 계산한다.
     # agg 함수는 pandas 나 numpy 에서 제공하는 집계함수 이외에도 사용자 정의 함수를 사용할 수 있음.
-    # (단, 조건 - 함수는 series 를 파라미터에 전달하면 숫자(스칼라)를 리턴하는 함수여야 한다)
+    # (단, 조건 - 함수는 series 를 파라미터에 전달하면 숫자(스칼라)를 리턴하는 함수여야 한다)  -> 보충이 필요하닷
     print('===agg by column(axis = 0)')
     print(df.agg('mean'))
     # 작동원리 : '함수'를 agg 하는 데이터에 각각 적용하여 축 1개 당 값을 하나 만들어낸다.

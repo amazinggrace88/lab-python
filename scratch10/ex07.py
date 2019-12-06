@@ -9,7 +9,7 @@ import pandas as pd
 
 def fill_group_mean(df):
     group_mean = df['data'].mean()  # DataFrame 객체를 가지고 mean 출력
-    print('division\'s group mean is \n', group_mean)  # group이 알파벳 순서대로 출력됨
+    print('division\'s group mean is \n', group_mean)  # group 이 알파벳 순서대로 출력됨
     return df.fillna(group_mean)  # group_mean : Series
 
 
@@ -55,7 +55,7 @@ if __name__ == '__main__':
     grouped = df.groupby('division')  # DataFrameGroupBy 객체 생성
     cleaned = grouped.apply(fill_group_mean)  # DataFrameGroupBy 객체에 apply 함수 적용
     # 작동원리 : dataframe 자체를 apply에 넘겨버림 (원래는 row 1개, col 1개씩 줬었는데)
-    # 즉, GroupBy.apply(fn)는 함수 fn의 첫번째 파라미터에 DataFrameGroupvy 객체를 동작함
+    # 즉, GroupBy.apply(fn)는 함수 fn의 첫번째 파라미터에 DataFrameGroupBy 객체를 동작함
     # 사용자 정의 함수 또한 DataFrame 이 파라미터로 들어간다고 가정하고 만든다~
     # groupby 가 되어 있는 컬럼의 평균을 출력하는 것!
     print(cleaned)
