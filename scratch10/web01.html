@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>web 1</title>
+</head>
+<body>
+    <!--
+    주석(comment)
+
+    html의 구성 : tag/attribute/contents
+    tag : html, body, h1, p, div, img,..
+          start tag 와 end tag 가 짝을 이룬다 (error는 브라우저에서 보인다 - 코드 상으로는 보이지 않는다!)
+          tag1 는 tag2 를 가질 수 있다(tag1 부모 요소, tag2 자식 요소 - 계층구조를 가진다)
+    attribute : start tag 안에서 속성들을 설정하기 위해서 사용
+                charset, href, src, style,..
+    content : start tag 와 end tag 사이의 내용들
+
+    브라우저(Chrome, IE, Firefox, ..)는 HTML 문서를 분석해서 화면에 보여준다.
+    즉, 태그로 이루어진 문서를 브라우저가 화면에 보여줄 수 있도록 렌더링한다
+
+    <h1> .. <h6> : 제목 (큰..작) bold체
+    <p> : 본문
+    <div> : 브라우저 안에서 화면 영역을 나눠주는 용도. 브라우저의 구조를 잡는 역할
+    <b> : bold체
+    <a> : anchor, 화면에 링크를 만들어주는 역할
+
+    box 모양 : 파란색 content / padding 안쪽여백 / border 테두리선 / margin 바깥여백 /
+    줄바꿈은 옵션 (블록 레벨 태그 (줄바꿈 있음) <-> 인라인 태그 (줄바꿈 없음)) - 태그를 이용해서 넣지 않는 enter -> 화면에 반영되지 않는다.
+    <br/> : 줄바꿈
+    semantic tag : <strong></strong>처럼 의미가 들어간 태그 - html5에서 새로 추가된 태그 / 웹크롤러가 사용하는 태그 / 웹 검색 엔진에서 더 잘 검색됨
+    -->
+    <h1>처음 작성하는 <br/> HTML</h1>
+    <h2>HTML : HyperText Markup Language</h2>
+    <p>여기는 <strong>paragraph</strong>입니다.</p>
+    <div>여기는 <b>devision</b>입니다.</div>
+    <a href="https://www.daum.net/">다음 카카오</a>
+    <a href="https://www.daum.net/">
+    <img src="dreamroom.png", style="width: 400px;"/>
+    </a>
+</body>
+</html>
+
