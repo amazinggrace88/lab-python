@@ -1,3 +1,4 @@
+# coding=utf-8
 '''
  DataFrame.apply(function, axis)
     axis = 0 (기본값) : DataFrame의 각 컬럼을 함수의 파라미터에 전달함.
@@ -34,8 +35,8 @@ if __name__ == '__main__':
     })
 
     print(df)
-    print(squares(df))  # squares() 함수 적용이 잘 됨. why? df.series가 np.array를 기준으로 만들어진 것이기 때문에
-    # [[]] list의 list로 만든 df는 squares() 함수 적용 안 됨
+    print(squares(df))  # squares() 함수 적용이 잘 됨. why? df.series 가 np.array 를 기준으로 만들어진 것이기 때문에
+    # [[]] list 의 list 로 만든 df는 squares() 함수 적용 안 됨
     df2 = [[1, 4], [2, 5], [3, 6]]
     # squares(df2) error
 
