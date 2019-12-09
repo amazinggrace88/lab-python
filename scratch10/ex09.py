@@ -28,8 +28,8 @@ with open('web02.html', mode='r', encoding='UTF-8') as f:
     for cls_2 in soup(class_='class2'):
         print(cls_2)
 
-    print()
     # HTML 문서 안의 "id1" 아이디 속성을 갖는 요소를 찾음
+    print()
     for id_1 in soup(attrs={'id':'id1'}):
         print(id_1)
     print(soup.find(attrs={'id':'id1'}))  # 같은 결과 dict 방식
@@ -37,7 +37,7 @@ with open('web02.html', mode='r', encoding='UTF-8') as f:
     print(soup.find(id='id1').text)  # text property 사용 가능
     print(soup(id='id1'))  # 다른 결과 - find_all 과 같이 [] 리스트 안에 묶인다.
     # print(soup(id='id1').text)  # error! why? [] 안에 묶였기 때문에..텍스트로 만들려면 인덱스 필요해~!
-    print(soup(id='id1')[0].text)
+    print(soup(id='id1')[0].text)  # soup.find_all(id='id1')[0].text 같은 결과
 
     # 즉, 반복문을 사용할 때는
     # 리스트에 인덱스를 가지고 사용!
