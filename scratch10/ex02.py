@@ -1,3 +1,4 @@
+# coding=utf-8
 '''
 실습 : 
 집계 함수(pandas.Series 또는 pandas.DataFrame 클래스가 가지고 있는 메소드들: count, mean, sum.. ) 사용하여
@@ -94,8 +95,8 @@ if __name__ == '__main__':
     grouped = emp_df.groupby(['DEPTNO', 'JOB'])
     sal_by_dept_job = grouped['SAL']
     df = sal_by_dept_job.agg({
-        'Count':'count',
-        'Average':'mean',
+        'Count': 'count',
+        'Average': 'mean',
         'Minimum': 'min',
         'Maximum': 'max',
         'Range': lambda x: x.max() - x.min()

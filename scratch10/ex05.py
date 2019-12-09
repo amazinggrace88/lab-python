@@ -1,3 +1,4 @@
+# coding=utf-8
 '''
  DataFrame.apply(function, axis)
     axis = 0 (기본값) : DataFrame 의 각 컬럼을 함수의 파라미터에 전달함.

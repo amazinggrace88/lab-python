@@ -1,3 +1,4 @@
+# coding=utf-8
 '''pandas : group_by / aggregate / apply 복습
 '''
 import numpy as np

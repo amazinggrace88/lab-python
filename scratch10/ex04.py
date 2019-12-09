@@ -1,3 +1,4 @@
+# coding=utf-8
 import pandas as pd
 from lab_python.scratch10.ex02 import peak_to_peak
 
@@ -37,7 +38,7 @@ if __name__ == '__main__':
 
     # GroupBy 객체 컬럼들마다 서로 다른 함수를 aggregate 로 적용할 때
     # agg({'Groupby 객체에 있는 col_name':[functions1, functions2, ], ... })
-    # grouping 된 데이터 프레임의 tip 컬럼에는 max() 함수를 aggregate 하고, size 컬럼에는 sum() 함수를 aggregate함.
+    # grouping 된 데이터 프레임의 tip 컬럼에는 max() 함수를 aggregate 하고, size 컬럼에는 sum() 함수를 aggregate 함.
     # 주의! key1, key2가 같으면 안된다.
     # 같은 함수는 와도 상관없다.  ex_ result = df_day.agg({'tip': 'max', 'size': 'max'})
     result = df_day.agg({'tip': 'max', 'size': 'sum'})
