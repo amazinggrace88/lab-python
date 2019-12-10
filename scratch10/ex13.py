@@ -21,5 +21,4 @@ google_crawler.crawl(keyword='펭수', filters=filters, max_num=1000)
 # 다운로드 받으면서 파일 이름들이 순서대로 00001, 00002,,로 들어간다.
 # https://icrawler.readthedocs.io/en/latest/builtin.html#search-engine-crawlers GoogleImageCrawler 문서
 # threads => 컴퓨터의 코어, 컴퓨터의 용량을 얼마나 많이 사용해서 컴퓨터의 코어를 돌리는지!
-
-# https://scrapy.org/ ==> 문서 보고 이용하기 꼭 사용해보기 + beautifulsoup 이랑 비교하기~
+# https://scrapy.org/ ==> 문서 보고 이용하기 꼭 사용해보기 + beautifulsoup 이랑 비교하기

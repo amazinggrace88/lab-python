@@ -22,8 +22,7 @@ def hani_search(keyword):
         html = response.text.strip()  # text 는 문서 추출, strip() 은 문자열의 앞,뒤 공백만 자르고 중간 공백을 없애주지는 않는다.
         # HTML 문서를 분석하기 위한 BeautifulSoup 객체 생성
         soup = BeautifulSoup(html, 'html5lib')
-        # news_link = soup.select(' ul.search-result-list  li.first-child dl dt a')  # 시작점은 자기가 정해도 되~
-        news_link = soup.select(' ul.search-result-list  li dl dt a')  # 같은 결과 : [] 로 출력됨
+        news_link = soup.select(' ul.search-result-list  li dl dt a')  # 같은 결과 : [] 로 출력됨  /  # 시작점은 자기가 정해도 되~
         for link in news_link:
             news_url = link.get('href')  # 검색 결과 뉴스 링크 URL
             news_title = link.text  # 검색 결과 뉴스 제목

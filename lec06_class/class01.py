@@ -33,30 +33,29 @@ class BasicTV:
     max_channel, min_channel = 5, 0
     max_volume, min_volume = 5, 0
 
-    # 생성자가 실행되었을 때 실행되는 메소드(함수)
-    # self의 의미 : 주소값
-    def __init__(self, power, channel, volume): # __init__(self)를 꼭 써야함!
+    # __init__ : 생성자가 실행되었을 때 실행되는 메소드(함수)
+    # self의 의미 : 주소값 -> BasicTV. = Self.
+    def __init__(self, power, channel, volume):  # __init__(self)를 꼭 써야함!
         print('BasicTV 생성자 호출')
         self.power = power
         self.channel = channel
-        self.volume = volume #volume이라는 파라미터에 저장된 객체를 self.volume에 저장한다
+        self.volume = volume  # volume 이라는 파라미터에 저장된 객체를 self.volume 에 저장한다
 
-
-    # def 사이는 두 줄 띄워준다.
     # 클래스가 내부에서 정의하는 함수 : 메소드
     def powerOnOff(self):
-        if self.power: # power 변수가 true 이면
+        if self.power:  # power 변수가 true 이면
             self.power = False
             print('TV off')
-        else: # power 변수가 false 이면
+        else:  # power 변수가 false 이면
             self.power = True
             print('TV on')
+    # def 사이는 두 줄 띄워준다.
 
-# 기능 추가시 고려할 점
-# - 채널 0 - 1 = 999 (순환/범위있음) : 0 ~ 5 까지 범위 설정하기
-# - 볼륨 최댓값 5, 최솟값 0, : 더이상 올라가지 않게, 더이상 내려가지 않게
-# - powerOnOff TV꺼질 때 작동되지 않음
-    
+    # 기능 추가시 고려할 점
+    # - 채널 0 - 1 = 999 (순환/범위있음) : 0 ~ 5 까지 범위 설정하기
+    # - 볼륨 최댓값 5, 최솟값 0, : 더이상 올라가지 않게, 더이상 내려가지 않게
+    # - powerOnOff TV 꺼질 때 작동되지 않음
+
     def channelUp(self):
         # TV가 켜져 있는 경우에만 채널 변경(+1)
         if self.power:
@@ -64,7 +63,7 @@ class BasicTV:
                 self.channel += 1
             # 현재 채널 값이 채널의 최댓값 보다 작으면 채널 +1
             else:
-            # 현재 채널값이 채널의 최댓값과 같으면 0으로 순환(=min_channel)
+            # 현재 채널값이 채널의 최댓값과 같으면 0으로 순환(= min_channel)
                 self.channel = self.min_channel
             print('Channel:', self.channel) # 순환되지 않거나 채널 +1 되거나 모두 print
 
@@ -80,7 +79,6 @@ class BasicTV:
             print('Channel:', self.channel)
 
 
-# volume up / volume down 스스로 해보기
     def volumeUp(self):
         self.volume += 1
         print('volume:', self.volume)
@@ -91,7 +89,7 @@ class BasicTV:
         print('volume:', self.volume)
 
 
-#     클래스의 멤버가 되려면 들여쓰기 (4칸) 해야함
+#     클래스의 엠버변수가 되려면 들여쓰기 (4칸) 해야함
 #     파이썬 함수들은 대문자가 아닌 _로 만들기 (단어와 단어를 분리)
 #         ------------클래스 설계(정의) 끝
 
@@ -99,7 +97,7 @@ class BasicTV:
 # 클래스의 객체(인스턴스)를 생성해서 변수에 저장 -> 생성자(constructor) 호출 -> 객체(object) 생성
 tv1 = BasicTV(False, 0, 0)
 # 출력: BasicTV(=생성자) 호출하면서 heap 상에 메모리를 확보한다.
-#      확보한 메모리의 주소를 __init__을 호출할 때 self에 준다.
+#      확보한 메모리의 주소를 __init__을 호출할 때 self 에 준다.
 # cf. ctrl + 마우스 BasicTV에 갖다대면, __init__() : 생성자로 이동
 
 # 객체 생성의 과정
@@ -108,7 +106,7 @@ tv1 = BasicTV(False, 0, 0)
 
 # heap : 메모리 주소 + 객체 1개 저장
 # --------------
-# self.power = False : self를 찾아서 power에 false를 저장한다.
+# self.power = False : self 를 찾아서 power 에 false 를 저장한다.
 # self.channel = 0
 # self.volume = 0
 # self : 저장장소(주소)
@@ -120,9 +118,9 @@ tv1 = BasicTV(False, 0, 0)
 
 
 # 2) class instance 호출
-print(tv1) # <__main__.BasicTV object at 0x0000020ADF851B48> 현재 파일에서 직접 실행되는 모델 __main__.BasicTV object
-print(tv1.power) # tv1을 참조하면 power라는 값이 있고 그 값은 false이다.
-print(tv1.volume) # 객체(인스턴스).변수
+print(tv1)  # <__main__.BasicTV object at 0x0000020ADF851B48> 현재 파일에서 직접 실행되는 모델 __main__.BasicTV object
+print(tv1.power)  # tv1을 참조하면 power라는 값이 있고 그 값은 false이다.
+print(tv1.volume)  # 객체(인스턴스).변수
 
 
 # 함수와 메소드의 차이점 - self! 클래스가 가지는 모든 메소드는 항상 첫번째 파라미터 = self - self 에 값을 주지 않아도 된다.
