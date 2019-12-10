@@ -1,3 +1,4 @@
+# coding=utf-8
 """
 daum 뉴스 web crawling
 머신러닝 (한글로) 검색 결과

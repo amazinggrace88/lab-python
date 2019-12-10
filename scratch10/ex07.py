@@ -1,3 +1,4 @@
+# coding=utf-8
 '''
 DataFrame의 NA 처리
 1) NA 를 평균값으로 대체

@@ -1,3 +1,4 @@
+# coding=utf-8
 from bs4 import BeautifulSoup
 
 with open('web02.html', mode='r', encoding='UTF-8') as f:
