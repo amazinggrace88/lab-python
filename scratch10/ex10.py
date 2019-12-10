@@ -17,7 +17,7 @@ from bs4 import BeautifulSoup
 # 2) post 방식
 # 2)-1 (ex 로그인) 정보를 감춰서 요청을 보낸다.
 
-# 접속할 사이터(웹 서버) 주소
+# 접속할 사이트(웹 서버) 주소
 url = 'https://search.daum.net/search?w=news&q=%EB%A8%B8%EC%8B%A0%20%EB%9F%AC%EB%8B%9D&DA=YZR&spacing=0'
 # 사이트(웹 서버)로 요청(request)을 보냄
 html = requests.get(url).text.strip()
@@ -29,9 +29,37 @@ print(html[0:100])
 # HTML 문서의 모든 링크에 걸려 있는 주소들을 출력
 soup = BeautifulSoup(html, 'html5lib')
 for link in soup('a'):
-    pass
-    # print(link.get('href'))
+    print(link.get('href'))
 # 관심 있는 링크(뉴스 링크들)만 찾을 수 있는 방법 찾기
-for link in soup('a', attrs={'class':'f_link_b'}):
+print()
+# 개발자도구에서 코드에 더블클릭 - coll_cont
+# class = "coll_cont" 는 사이트 내 여러개 있을 수 있으므로 확인해보자
+# id 를 여러개 사용하는 경우도 있으므로, 장담할 수 없음
+# 방법 1 : class 로 찾기 - 같은 클래스 이름이 있는 모든 HTML 요소들을 찾음
+div_coll_cont = soup.find_all(class_='coll_cont')  # soup.find_all(attrs={'class': 'coll_cont'})
+print(len(div_coll_cont))  # div_coll_cont 가 4 개가 나옴 - 개발자도구에서 우리가 찾는 coll_cont 가 몇번째인지 찾기 (ctrl+f) : 다른 부분들 찾기 (enter)
+
+print()
+# HTML 하위 요소(sub/child element)를 찾는 방법:
+# 1) parent_selector >(꺽쇠) child_selector : 바로 아랫쪽에 있는 element 를 찾아갈 수 있는 방법
+# ex_ TAG : div > ul > li
+# class, id 도 똑같이 쓸 수 있다.
+# ex_ CLASS/ID : .coll_cont > #clusterResultUL > .fst
+# 문제점 : 너무 많이 써야 해서 a 로 가기 힘들다 (하나씩 밑으로 내려가니까)
+
+# 2) ancestor_selector(조상 선택자) descendant_selector(자손 선택자) : 자손들을 모두 찾아가겠다는 의미..공백을 주면 된다.
+# ex_ div li (div 의 자손 요소들 중에 li 들)
+# ex_ .coll_cont .fst (클래스 .coll_cont 요소의 자손 요소들 중 클래스가 .fst 인 요소들)
+
+# <결론>
+# soup.select(css_selector) : soup 객체에서 CSS 선택자로 요소들을 찾는 방법
+news_link = soup.select('.coll_cont ul li a.f_link_b')  # webpage 보고 복습 !
+for link in news_link:
     print(link.get('href'))
 
+
+# id 로만 찾으면 안되는 이유!
+print()
+for link in soup('a', attrs={'id':'clusterresultUL'}):
+    print(link.get('href'))
+# id = clusterresultUL 이 어디 있을 지 모르기 때문에 범주를 정해서 down 시켜 id 를 범주화해야 한다.
