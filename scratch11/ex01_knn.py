@@ -11,6 +11,7 @@ from sklearn.preprocessing import StandardScaler  # class 를 import 하겠다�
 from sklearn.metrics import confusion_matrix, classification_report
 
 if __name__ == '__main__':  # main 이라고 치고 enter
+
     # 1. data preparation
     col_names = ['sepal-length', 'sepal-width', 'petal-length', 'petal-width', 'Class']  # csv file's col-name
     # csv file 에서 DataFrame 생성
@@ -23,10 +24,9 @@ if __name__ == '__main__':  # main 이라고 치고 enter
     print(dataset.tail())  # (=dataset.iloc[-1:]) np.array 또한 마찬가지 - 마지막 행~ (종이 필기 보기)
 
     # 2. data 전처리
-    # : NA 처리(없음)
-
+    # : NA 처리(없음) --> 있으면 해야한다~
     # : 학습 세트(training set)와 검증 세트(test set)로 나누기
-    # 순서 1) 데이터 세트를 데이터(포인트)와 레이블로 구분
+    # 순서 1) 데이터 세트를 데이터(포인트)와 레이블로 구분 -> pd에서 np.ndarray 로 변환
     # Dataset 의 Class 를 label 이라고 부른다(답지)
     # 순서 2) 학습 세트(training set)와 검증 세트(test set)로 구분
 
@@ -38,7 +38,7 @@ if __name__ == '__main__':  # main 이라고 치고 enter
 
     # 순서 2) 학습 세트(training set)와 검증 세트(test set)로 구분
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)  # 순서 있음.(지켜야되~)
-    # 과정 : shuffle 할 때, X, y 같이 shuffle 시켜준다.(인덱스만 셔플하여 X, y 를 똑같이 선택) -> tuple 형식으로 4개를 리턴 (?)
+    # 과정 : shuffle 할 때, X, y 같이 shuffle 시켜준다.(인덱스만 셔플하여 X, y 를 똑같이 선택)
     print(len(X_train), len(X_test), len(y_train), len(y_test))  # 120 30 120 30
     print(X_train[:3])  # [[]]
     print(y_train[:3])  # []
@@ -46,8 +46,8 @@ if __name__ == '__main__':  # main 이라고 치고 enter
     # 3. 표준화 (or 정규화) : 거리 계산을 위해서 각 특성(변수)들을 스케일링 - z-score 표준화 선택
     # Z-score 표준화: 평균을 0, 표준편차 1 로 변환
     scaler = StandardScaler()  # Scaler 객체 생성 : copy: Any = True 이므로 () 안에 아무것도 넣지 마
-    scaler.fit(X_train)  # 컬럼 하나의 평균과 표준편차 계산함. 4개 변수에 대해 평균, 표준편차 계산
-    X_train = scaler.transform(X_train)  # 스케일링(표준화) 수행 : z-score 공식 데이터 하나에 대입
+    scaler.fit(X_train)  # 컬럼 당 평균과 표준편차 계산함. 4개 변수에 대해 평균, 표준편차 계산
+    X_train = scaler.transform(X_train)  # 스케일링(표준화) 수행 : z-score 공식 데이터 하나에 대입 (Perform standardization by centering and scaling)
     X_test = scaler.transform(X_test)
     # ***** train set 의 각 컬럼의 평균, 표준편차를 가지고 test 에 적용함. - test 의 평균과 표준편차를 가지고 하지 않아~
     # 가정 : test set 은 train set 의 분포를 따른다.

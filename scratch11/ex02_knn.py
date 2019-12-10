@@ -78,4 +78,3 @@ if __name__ == '__main__':
     plt.xlabel('k-value')
     plt.ylabel('mean error')
     plt.show()
-    

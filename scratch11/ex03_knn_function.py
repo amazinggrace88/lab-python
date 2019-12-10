@@ -29,7 +29,7 @@ def train_test_split(X, y, test_size):
     return X_train, X_test, y_train, y_test
 
 
-class MyScaler:  # init 생략해도 됨, class의 엠버변수(클래스가 가지고 있는 data들 = 변수)는 다른 def 에서 사용 가능
+class MyScaler:  # init 생략해도 됨, class 의 엠버변수(클래스가 가지고 있는 data 들 = 변수)는 다른 def 에서 사용 가능
     def fit(self, X):
         """X 의 각 특성들의 평균과 표준 편차를 저장만! return 없음 (특성=feature=변수=variable 별 평균, 표준편차 계산)
         컬럼 갯수만큼 만들어져야 함
@@ -44,7 +44,7 @@ class MyScaler:  # init 생략해도 됨, class의 엠버변수(클래스가 가
     # numpy axis = 0 column = pandas.df.mean axis = 0 column
 
     def transform(self, X):
-        """X의 평균을 0, 표준편차를 1로 변환 및 리턴, fit 함수(메소드)에 있는 mean, std를 사용한다"""
+        """X의 평균을 0, 표준편차를 1로 변환 및 리턴, fit 함수(메소드)에 있는 mean, std 를 사용한다"""
         # X의 행,열 만큼 빈 np.array(값은 들어가 있지 않음)
         dim = X.shape
         transformed = np.empty(dim)
@@ -57,7 +57,7 @@ class MyScaler:  # init 생략해도 됨, class의 엠버변수(클래스가 가
 
 class MyKnnClassifier:
     def __init__(self, n_neighbots=5):  # 객체 생성
-        pass # 해보기
+        pass  # 해보기
 
     def fit(self, X_train, y_label):  # 모델 훈련
         pass
@@ -65,7 +65,7 @@ class MyKnnClassifier:
     def predict(self, X_test):  # 예측
         pass
 
-    # class MyKnnClassifier에 필요한 함수들
+    # class MyKnnClassifier 에 필요한 함수들
     # 거리 계산 메소드(클래스가 가지고 있는 함수)
     # 투표 메소드(클래스가 가지고 있는 함수)
 

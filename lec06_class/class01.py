@@ -34,7 +34,7 @@ class BasicTV:
     max_volume, min_volume = 5, 0
 
     # __init__ : 생성자가 실행되었을 때 실행되는 메소드(함수)
-    # self의 의미 : 주소값 -> BasicTV. = Self.
+    # self 의 의미 : 주소값 -> BasicTV. = Self. 와 같은 의미
     def __init__(self, power, channel, volume):  # __init__(self)를 꼭 써야함!
         print('BasicTV 생성자 호출')
         self.power = power
@@ -113,45 +113,47 @@ tv1 = BasicTV(False, 0, 0)
 # powerOnOff()
 # channelUp()
 # ChannelDown()
-# -------------- 하나의 객체로 묶여서 저장된다 (주소도 1개 = self에 저장됨)
+# -------------- 하나의 객체로 묶여서 저장된다 (주소도 1개 = self 에 저장됨)
+
 
 
 
 # 2) class instance 호출
 print(tv1)  # <__main__.BasicTV object at 0x0000020ADF851B48> 현재 파일에서 직접 실행되는 모델 __main__.BasicTV object
-print(tv1.power)  # tv1을 참조하면 power라는 값이 있고 그 값은 false이다.
+print(tv1.power)  # tv1을 참조하면 power 라는 값이 있고 그 값은 false 이다.
 print(tv1.volume)  # 객체(인스턴스).변수
 
 
-# 함수와 메소드의 차이점 - self! 클래스가 가지는 모든 메소드는 항상 첫번째 파라미터 = self - self 에 값을 주지 않아도 된다.
+# 함수와 메소드의 차이점 : self
+#                     클래스가 가지는 모든 메소드는 항상 첫번째 파라미터 = self - self 에 값을 주지 않아도 된다.
 # 작동 과정
-# tv1(객체)가 주소를 가지고 powerOnOff(tv1)으로 들어가서 self가 된다.(파라미터 값이 된다)
-tv1.powerOnOff() # power가 tv1에서 false인 상태, method로 들어가서 powerOnOff 함수로 들어간다. - TV on 출력 + tv1의 power = true로 바뀌고 출력
+# tv1(객체)가 주소를 가지고 powerOnOff(tv1)으로 들어가서 self 가 된다.(파라미터 값이 된다)
+tv1.powerOnOff()  # power 가 tv1에서 false 인 상태, method 로 들어가서 powerOnOff 함수로 들어간다. - TV on 출력 + tv1의 power = true로 바뀌고 출력
 
-tv1.channelUp() # channel = 0인 상태 + 1
-tv1.channelUp() # channel = 1인 상태 + 1
-tv1.channelDown() # channel = 2인 상태 - 1
+tv1.channelUp()  # channel = 0인 상태 + 1
+tv1.channelUp()  # channel = 1인 상태 + 1
+tv1.channelDown()  # channel = 2인 상태 - 1
 
-tv1.powerOnOff() # power가 tv1에서 true인 상태, method로 들어가서 powerOnOff 함수로 들어간다. - TV off 출력 + tv1의 power = false로 바뀌고 출력
+tv1.powerOnOff()  # power 가 tv1에서 true 인 상태, method 로 들어가서 powerOnOff 함수로 들어간다. - TV off 출력 + tv1의 power = false로 바뀌고 출력
 
 tv1.powerOnOff()
-print(tv1.channel) # channel = 1인 상태에서 꺼졌다 다시 켜지면 1로 저장되었던 것이 그대로 출력
+print(tv1.channel)  # channel = 1인 상태에서 꺼졌다 다시 켜지면 1로 저장되었던 것이 그대로 출력
 
 # channelup function test
 if __name__ == '__main__':
     tv3 = BasicTV(False, 0, 0)
     print('전원상태 : ', tv3.power)
-    tv3.channelUp() # 전원 꺼진 상태에서 channel + 1
-    tv3.powerOnOff() # TV 킨다
+    tv3.channelUp()  # 전원 꺼진 상태에서 channel + 1
+    tv3.powerOnOff()  # TV 킨다
     tv3.channelUp()
     tv3.channelUp()
     tv3.channelUp()
     tv3.channelUp()
     tv3.channelUp()
-    tv3.channelUp() # 최댓값 5를 지나서 0으로 순환
+    tv3.channelUp()  # 최댓값 5를 지나서 0으로 순환
 
 # 3) class instance 호출 2 : 다른 객체 만들기
-tv2 = BasicTV(True, 100, 5) # tv1과 완전히 다른 tv2 생성
-tv2.channelDown() # tv2에서 channelDown을 호출하였다.
+tv2 = BasicTV(True, 100, 5)  # tv1과 완전히 다른 tv2 생성
+tv2.channelDown()  # tv2에서 channelDown 을 호출하였다.
 
 
