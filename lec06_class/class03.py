@@ -1,6 +1,7 @@
-'''
+# coding=utf-8
+"""
 클래스 작성, 객체 생성, 메소드 사용 연습
-'''
+"""
 
 
 class Employee:
@@ -50,7 +51,7 @@ print(employees)  # __repr__
 # cf. refactoring : shift + F6
 # do refactor -> 한번에 변수 모두 다 바꿔버리기.
 
-# 정렬하기 : 기준을 주지 않았을 때 - 상황에 따라 정렬기준이 달라질 때
+# 정렬하기 : 기준을 주지 않았을 때 - 상황에 따라 정렬기준(key)이 달라질 때
 # print(sorted(employees)) # error
 print(sorted(employees, key=lambda x: x.empno))
 print(sorted(employees, key=lambda x: x.salary))
