@@ -54,14 +54,14 @@ for i in range(4):
     print(i, lang[i])
 print()
 
-# list의 길이를 구하는 함수를 range로 준다. (중간에 추가/삭제 된 list도 변경 없이 사용 가능)
+# list 의 길이를 구하는 함수를 range 로 준다. (중간에 추가/삭제 된 list 도 변경 없이 사용 가능)
 for i in range(len(lang)):
     print(i, lang[i])
 print()
 
 # dict is iterable for 'for 문'
-alpha = {1:'a', 2:'b', 3:'c'}
-print(alpha.keys())  # dict의 key -> 이름
+alpha = {1: 'a', 2: 'b', 3: 'c'}
+print(alpha.keys())  # dict 의 key -> 이름
 print(alpha.values())
 
 # key 를 찾고 싶을 때 : using .keys()

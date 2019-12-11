@@ -2,8 +2,8 @@
 명시적 데이터 타입 변환(casting)(명시적 형 변환) : int(), float(), str()
 """
 
-# "3.1" + 1.2 error: string과 integer를 더할 수 없다.
-print(float('3.1') + 1.2)  # '3.1' 문자(string)타입을 숫자타입float으로 변환하고 산술연산 실행
+# "3.1" + 1.2 error: string 과 integer 를 더할 수 없다.
+print(float('3.1') + 1.2)  # '3.1' 문자(string)타입을 숫자타입 float 으로 변환하고 산술연산 실행
 
 # 문자열 + 문자열 : concatenate (문자열 이어붙이기)
 print('3.1' + str(1.2))
