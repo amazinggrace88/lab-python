@@ -1,3 +1,4 @@
+# coding=utf-8
 '''pandas : group_by / aggregate / apply 복습
 '''
 import numpy as np
@@ -53,4 +54,31 @@ if __name__ == '__main__':
     g1 = emp_df.groupby(by='DEPTNO')
     print(g1['SAL'].mean())
     g2 = emp_df.groupby(by='')
+
+# ex08
+with open('web01.html', mode='r', encoding='UTF-8') as f:
+    # html parsor : html5lib, 분석 도구 BeautifulSoup
+    soup = BeautifulSoup(f, 'html5lib')
+    print(soup)
+# h1 tag 찾는 방법 : find - 첫번째 1개만 출력
+h1 = soup.find('h1')
+print(h1)
+h1_1 = soup.h1
+print(h1_1)
+# find_all
+h1 = soup.find_all('h1')
+print(h1)
+h1_1 = soup('h1')
+print(h1_1)
+# .get (태그의 속성이 가지고 있는 값만 추출하여 리턴)
+
+# ex09
+# 파일 열어서 soup 에 분석한 BeautifulSoup 객체를 생성 - DOM tree가 만들어진다.
+with open('web02.html', mode='r', encoding='UTF-8') as f:
+    soup = BeautifulSoup(f, 'html5lib')
+
+# class로 요소를 찾는 방법
+# Dictionary 로 찾기
+# class_ 로 찾기
+
 

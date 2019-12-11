@@ -1,3 +1,4 @@
+# coding=utf-8
 '''
 모듈 (module) : 파이썬 파일(.py)
 - 쉽게 말해 파이썬 파일
@@ -18,12 +19,12 @@
 # 2) from 모듈이름 import 기능(변수, 함수, 클래스 이름) : 파일 안 기능을 가져옴
 # 2-1) from 모듈이름 import 기능(변수, 함수, 클래스 이름) : 파일 안 기능을 가져옴 (권장)
 from math import pi
-print(pi) # print(math.pi)가 아니다. why? math 파일로부터 pi 라는 변수만을 가져왔기 때문
+print(pi)  # print(math.pi)가 아니다. why? math 파일로부터 pi 라는 변수만을 가져왔기 때문
 from math import sqrt
 print(sqrt(2))
 
 # 2-2) math 라는 모듈 안의 모든 기능을 가져옴 (python 공식 문서에서 권하지 않음 why? 문제점 존재 : pi라는 변수를 설정하면 변수 pi가 바뀌어버림)
-from math import * # 모듈이 가지고 있는 모든 변수를 가지고 온다.
+from math import *  # 모듈이 가지고 있는 모든 변수를 가지고 온다.
 print(pi)
 pi = 6
-print(sin(pi/2)) # 변수 6으로 바뀌었기 때문에, pi = 3.14가 아니게 된다.(즉, math 파일의 pi 변수가 아니게 된다)
+print(sin(pi/2))  # 변수 6으로 바뀌었기 때문에, pi = 3.14가 아니게 된다.(즉, math 파일의 pi 변수가 아니게 된다)

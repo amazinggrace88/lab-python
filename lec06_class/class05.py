@@ -1,37 +1,33 @@
-'''
+"""
 클래스 만들기 연습 : 직사각형 만들기
-'''
+"""
 
 class Rectangle:
-    '''
+    """
     직사각형 클래스
-    '''
+    """
     def __init__(self, width=0, height=0):
         self.width = width
         self.height = height
 
-
     def info(self):
         print(f'Rectangle(w = {self.width}, h = {self.height})')
 
-
     def area(self):
         return self.width * self.height
-
 
     # ==연산자를 사용했을 때 자동으로 호출되는 메소드
     def __eq__(self, other):
         return self.width == other.width and self.height == other.height
 
-
     # 객체의 내용을 print할 때 자동으로 호출되는 메소드
     def __str__(self):
         # return f'<{__name__}.Ractangle object at {self}>' # 기본 형태
-         return f'<{__name__}.직사각형 객체>' # 주소를 접근, 변경하지 못하기 때문에 주소값 써주지 않았음
+         return f'<{__name__}.직사각형 객체>'  # 주소를 접근, 변경하지 못하기 때문에 주소값 써주지 않았음
 
 
 if  __name__ == '__main__':
-    rect1 = Rectangle(3, 2) # 이 파일에서만 생성자 호출
+    rect1 = Rectangle(3, 2)  # 이 파일에서만 생성자 호출
     # rect1 = Rectangle() # 기본값 없으면 error!
     # 파라미터에 기본값 넣어주어야 함 (why? __init__은 함수이므로 self를 제외한 파라미터를 반드시 넣어야함 -> 해결방법 : default argument)
     print(type(rect1)) # 타입

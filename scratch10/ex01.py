@@ -1,7 +1,8 @@
-'''
+# coding=utf-8
+"""
 pandas groupby, aggregate, apply 작업 개요
 <groupby>
-'''
+"""
 
 import pandas as pd
 import numpy as np
