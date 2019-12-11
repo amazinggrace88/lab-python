@@ -1,3 +1,4 @@
+# coding=utf-8
 """
 1) 파일 열기(open)
 2) 파일 읽기(read)/쓰기(write)

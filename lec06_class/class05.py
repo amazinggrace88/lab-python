@@ -1,3 +1,4 @@
+# coding=utf-8
 """
 클래스 만들기 연습 : 직사각형 만들기
 """
@@ -20,7 +21,7 @@ class Rectangle:
     def __eq__(self, other):
         return self.width == other.width and self.height == other.height
 
-    # 객체의 내용을 print할 때 자동으로 호출되는 메소드
+    # 객체의 내용을 print 할 때 자동으로 호출되는 메소드
     def __str__(self):
         # return f'<{__name__}.Ractangle object at {self}>' # 기본 형태
          return f'<{__name__}.직사각형 객체>'  # 주소를 접근, 변경하지 못하기 때문에 주소값 써주지 않았음
