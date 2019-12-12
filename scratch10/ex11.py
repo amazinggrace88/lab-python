@@ -1,7 +1,8 @@
-'''
+# coding=utf-8
+"""
 (실습)
 다음에서 "머신러닝"으로 검색한 기사 100개의 URL 주소와 기사 제목을 출력
-'''
+"""
 
 # ***** 웹 주소 (usi, url) 구조(형식) *****
 # 프로토콜://서버주소[:포트번호]/경로?쿼리스트링
@@ -107,7 +108,7 @@ if false:
         # html = requests.get(url, params={'p': page}).text.strip() or
         response = requests.get(url, params={'p': page})  # query string 에 파라미터 추가를 자동으로 넣어 줌
         html = response.text.strip()
-        # request.get(url, params={key:value}) : param의 내용을 url의 query string의 파라미터로 추가해줌. 즉,  &key=parameter 를 url에 추가함
+        # request.get(url, params={key:value}) : param 의 내용을 url 의 query string 의 파라미터로 추가해줌. 즉,  &key=parameter 를 url 에 추가함
         # Soup 객체 생성
         soup = BeautifulSoup(html, 'html5lib')
         news_link = soup.select('.coll_cont ul li a.f_link_b')  # 1 page 10개

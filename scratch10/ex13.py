@@ -1,8 +1,9 @@
-'''
+# coding=utf-8
+"""
 # 이미지 웹크롤링
 icrawler 패키지를 사용해서, Google 이미지 검색 결과의 이미지들을 다운로드
-# pip install icrawler cmd에 설치 후 settings -> python interpreter 에서 설치 되어있는지 확인하기
-'''
+# pip install icrawler cmd 에 설치 후 settings -> python interpreter 에서 설치 되어있는지 확인하기
+"""
 import os
 from icrawler.builtin import GoogleImageCrawler
 
