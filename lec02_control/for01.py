@@ -1,10 +1,11 @@
-'''
+# coding=utf-8
+"""
 for 구문
 for 변수 in iterable:
     반복할 문장들
 
 *iterable : 반복 가능한 변수 ex_list / tuple / set / dict / str (문자열).. slicing 가능한 데이터 타입들!
-'''
+"""
 
 # range(to) : 0부터 (to - 1)까지 범위의 숫자들을 만들어주는 함수
 # range(from, to) : from 부터 (to - 1)까지 범위의 숫자들을 만들어주는 함수
@@ -54,7 +55,7 @@ for i in range(4):
     print(i, lang[i])
 print()
 
-# list의 길이를 구하는 함수를 range로 준다. (중간에 추가/삭제 된 list도 변경 없이 사용 가능)
+# list 의 길이를 구하는 함수를 range 로 준다. (중간에 추가/삭제 된 list 도 변경 없이 사용 가능)
 for i in range(len(lang)):
     print(i, lang[i])
 print()
