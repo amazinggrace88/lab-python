@@ -1,6 +1,6 @@
-'''
+"""
 for-in 구문 연습 2
-'''
+"""
 
 
 # if in for
@@ -27,12 +27,12 @@ print('fibonacci sequence : ', f)
 # 암호화와 복호화에 응용된다.
 for n in range(2, 11):
     isPrime = True
-    for divider in range(2, n): # 나눠주는 숫자
+    for divider in range(2, n):  # 나눠주는 숫자
         if n % divider == 0:
             print(f'{n} = {divider} x {n / divider}')
             isPrime = False
             break
-    if isPrime: #break 되었는지 아닌지 확인
+    if isPrime:  # break 되었는지 아닌지 확인
         print(f'{n}은 소수!')
 
 

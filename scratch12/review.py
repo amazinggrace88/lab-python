@@ -40,36 +40,22 @@ if __name__ == '__main__':
     # print(xy[1][1])
     print('xy의 예시 : \n', xy[1])
 
-    # 435 개를 그릴 수는 없잖아..? ㅠ.ㅠ
-    fig, ax = plt.subplots(5, 5)
-    xy_idx = 0
-    for row in range(5):
-        for col in range(5):
-            axis = ax[row, col]  # numpy array 에서 사용하는 방법 (= ax[row][col] 가능)
-            x = xy[xy_idx][0]
-            y = xy[xy_idx][1]
-            xy_idx += 1
-            axis.set_title(f'{x} vs {y}')
-            axis.set_xlabel(x)  # subplot 의 x 레이블
-            axis.set_ylabel(y)  # subplot 의 y 레이블
-            for name, group in cancer_by_diagnosis:
-                axis.scatter(group[x], group[y], label=name)
+    # 435 개를 그릴 수는 없잖아..? ㅠ.ㅠ -> for 문 돌려서 25개 씩 돌림! (4개 만들어짐)
+    for index_i in range(0, 100, 25):
+        fig, ax = plt.subplots(5, 5)
+        xy_idx = index_i
+        for row in range(5):
+            for col in range(5):
+                axis = ax[row, col]  # numpy array 에서 사용하는 방법 (= ax[row][col] 가능)
+                x = xy[xy_idx][0]
+                y = xy[xy_idx][1]
+                xy_idx += 1
+                axis.set_title(f'{x} vs {y}')
+                axis.set_xlabel(x)  # subplot 의 x 레이블
+                axis.set_ylabel(y)  # subplot 의 y 레이블
+                for name, group in cancer_by_diagnosis:
+                    axis.scatter(group[x], group[y], label=name)
     plt.legend()
     plt.show()
 
-    fig, ax = plt.subplots(5, 5)
-    xy_idx = 26
-    for row in range(5):
-        for col in range(5):
-            axis = ax[row, col]  # numpy array 에서 사용하는 방법 (= ax[row][col] 가능)
-            x = xy[xy_idx][0]
-            y = xy[xy_idx][1]
-            xy_idx += 1
-            axis.set_title(f'{x} vs {y}')
-            axis.set_xlabel(x)  # subplot 의 x 레이블
-            axis.set_ylabel(y)  # subplot 의 y 레이블
-            for name, group in cancer_by_diagnosis:
-                axis.scatter(group[x], group[y], label=name)
-    plt.legend()
-    plt.show()
 

@@ -9,8 +9,8 @@ from sklearn.naive_bayes import GaussianNB
 from sklearn.preprocessing import StandardScaler  # class
 # bring the data!
 cancer = datasets.load_breast_cancer()
-print('data shape : \n', cancer.data.shape)  #  (569, 30)
-print('cancer targets : \n', cancer.target_names)  #  ['malignant' 'benign']
+print('data shape : \n', cancer.data.shape)  # (569, 30)
+print('cancer targets : \n', cancer.target_names)  # ['malignant' 'benign']
 X = cancer.data
 y = cancer.target
 print(X[:5])  # 소수점으로 나와 있음
