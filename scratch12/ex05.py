@@ -26,9 +26,8 @@ def predict(summaries, X_test):
         # vote
         dict_for_vote = calculate_class_probability(summaries, X_test[i])
         for key, value in dict_for_vote.items():
-            max_value = max(dict_for_vote.values())
-            max_key =
-            if value == max(dict_for_vote.values()):
+            max_value = max(value)
+            if value == max_value:
                 prediction_list.append(key)
     return prediction_list
 
