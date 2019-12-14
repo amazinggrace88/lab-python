@@ -1,6 +1,7 @@
-'''
+# coding=utf-8
+"""
 assignment
-'''
+"""
 # import 문은 항상 맨 위에 쓰는 것이 원칙.
 import numpy as np
 from math import sqrt
@@ -15,19 +16,20 @@ for i in range(10):
     x = np.random.randint(0, 101) #100까지 나와야 하므로
     scores.append(x)
 print(scores)
-# i 는 for 문에서 사용되지 않지만 문법 때문에 필요하다. (비워둘 수는 없으니 _를 쓰는 것을 허용함)
+# i 는 for 문에서 사용되지 않지
+# 만 문법 때문에 필요하다. (비워둘 수는 없으니 _를 쓰는 것을 허용함)
 # x를 합쳐주자.
 for _ in range(10):
     scores.append(np.random.randint(0, 101))
 print(scores)
 
-# list에 저장된 시험점수 10개의 총점을 계산, 출력
+# list 에 저장된 시험점수 10개의 총점을 계산, 출력
 total = 0
 for score in scores:
-    total += score #더해야 하기 때문에, 더할 대상이 필요하므로 total 을 먼저 지정해주어야 함.
+    total += score  # 더해야 하기 때문에, 더할 대상이 필요하므로 total 을 먼저 지정해주어야 함.
 print(f'총점 : {total}')
 # or
-print(f'총점 2 : {sum(scores)}') #중괄호 안에 함수를 쓸 수 있음.
+print(f'총점 2 : {sum(scores)}')  # 중괄호 안에 함수를 쓸 수 있음.
 
 #list에 저장된 시험점수 10개의 평균을 계산, 출력
 avg = total / len(scores)
@@ -43,9 +45,9 @@ print('최소값 : ', min(scores))
 max_score = scores[0]  # scores 의 첫번째 값을 max 로 두겠다.
 min_score = scores[0]
 for score in scores:
-    if score > max_score:  # list에서 현재 최대값보다 더 큰 수를 찾은 경우
+    if score > max_score:  # list 에서 현재 최대값보다 더 큰 수를 찾은 경우
         max_score = score
-    if score < min_score:  # list에서 현재 최소값보다 더 작은 수를 찾은 경우 #elif하면 안됨! 계속 if문에서 반복, 모든 값 각각 if문에서 반복.
+    if score < min_score:  # list 에서 현재 최소값보다 더 작은 수를 찾은 경우 # elif 하면 안됨! 계속 if 문에서 반복, 모든 값 각각 if 문에서 반복.
         min_score = score
 print('최대값 : ', max_score, '최소값 : ', min_score)
 # cf. sorted() 정렬함수
