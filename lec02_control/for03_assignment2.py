@@ -1,6 +1,7 @@
-'''
+# coding=utf-8
+"""
 for-in 구문 연습
-'''
+"""
 
 # 구구단 2~9 출력
 # for-in 구문
@@ -22,7 +23,7 @@ for i in range(2, 10):
     for j in range(1, 10):
         print(f'{i} x {j} = {i * j}')
         if i == j:
-            break #뜻 : break가 포함된 가장 가까운 반복문을 종료한다.
+            break  # 뜻 : break 가 포함된 가장 가까운 반복문을 종료한다.
     print('------------')
 
 

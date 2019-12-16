@@ -1,6 +1,7 @@
-'''
+# coding=utf-8
+"""
 원 만들기
-'''
+"""
 from math import pi
 
 class Circle:
@@ -14,7 +15,7 @@ class Circle:
 
     def __init__(self, radius):
         self.radius = radius
-        if self.radius < 0: # 음수가 들어온 경우에만 error 출력! str일 경우에는 < 연산자를 쓸 수 없어 typeerror 출력
+        if self.radius < 0: # 음수가 들어온 경우에만 error 출력! str 일 경우에는 < 연산자를 쓸 수 없어 typeerror 출력
             raise ValueError('반지름은 0 또는 양수')
 
 

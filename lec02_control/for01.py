@@ -1,10 +1,11 @@
-'''
+# coding=utf-8
+"""
 for 구문
 for 변수 in iterable:
     반복할 문장들
 
 *iterable : 반복 가능한 변수 ex_list / tuple / set / dict / str (문자열).. slicing 가능한 데이터 타입들!
-'''
+"""
 
 # range(to) : 0부터 (to - 1)까지 범위의 숫자들을 만들어주는 함수
 # range(from, to) : from 부터 (to - 1)까지 범위의 숫자들을 만들어주는 함수
