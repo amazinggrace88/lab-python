@@ -31,14 +31,14 @@ print(f'총점 : {total}')
 # or
 print(f'총점 2 : {sum(scores)}')  # 중괄호 안에 함수를 쓸 수 있음.
 
-#list에 저장된 시험점수 10개의 평균을 계산, 출력
+# list에 저장된 시험점수 10개의 평균을 계산, 출력
 avg = total / len(scores)
 print(f'평균 : {avg}')
 # or
 print('평균2 :', np.mean(scores))
 print(f'평균2 : {np.mean(scores)}')
 
-#list에 저장된 시험점수 10개의 최대값/최소값 출력
+# list 에 저장된 시험점수 10개의 최대값/최소값 출력
 print('최대값 : ', max(scores))
 print('최소값 : ', min(scores))
 # or
@@ -53,9 +53,9 @@ print('최대값 : ', max_score, '최소값 : ', min_score)
 # cf. sorted() 정렬함수
 sorted_scores = sorted(scores)
 print('정렬됨 : ', sorted_scores)
-print('원본 배열 : ', scores) #원본 배열은 변경하지 않는다.
+print('원본 배열 : ', scores) # 원본 배열은 변경하지 않는다.
 
-#list 에 저장된 시험 점수의 표준편차 계산, 출력
+# list 에 저장된 시험 점수의 표준편차 계산, 출력
 std = []
 for i in scores:
     for j in range(10):
@@ -64,8 +64,8 @@ for i in scores:
 print('표준편차 : ', sqrt(sum(std) / len(std)))
 # or
 sum_of_scores = 0
-for score in scores: #scores 에서 score 점수를 꺼낸다.
-    sum_of_scores += (score - avg)**2 # 오른쪽을 왼쪽에 더해서 저장함.
+for score in scores:  # scores 에서 score 점수를 꺼낸다.
+    sum_of_scores += (score - avg)**2  # 오른쪽을 왼쪽에 더해서 저장함.
 standard_deviation = sqrt(sum_of_scores / len(scores))
 print(f'표준편차 : {standard_deviation}')
 print('표준편차2 :', np.std(scores))
