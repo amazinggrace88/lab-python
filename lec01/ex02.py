@@ -1,6 +1,6 @@
 """
 print() 방법들
-"""
+~"""
 
 print('hello, python!')
 

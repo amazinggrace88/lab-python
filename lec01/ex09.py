@@ -11,13 +11,13 @@ print(type(person))
 print(person['name'])
 print(person['age'])
 
-# dict의 key를 찾아주는 함수 .keys()
+# dict 의 key 를 찾아주는 함수 .keys()
 print(person.keys())
-# dict의 value를 찾아주는 함수 .values()
+# dict 의 value 를 찾아주는 함수 .values()
 print(person.values())
-# dict의 (key, value)를 찾아주는 함수 .items() : (각각의 원소들은 튜플)
+# dict 의 (key, value)를 찾아주는 함수 .items() : (각각의 원소들은 튜플)
 print(person.items())
-# for문에서 사용될 것
+# for 문에서 사용될 것
 
 students = {1:'강다혜', 2:'김수인', 3:'김영광', 10:'안도연'}
 print(students)

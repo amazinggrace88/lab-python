@@ -61,8 +61,8 @@ for i in range(len(lang)):
 print()
 
 # dict is iterable for 'for 문'
-alpha = {1:'a', 2:'b', 3:'c'}
-print(alpha.keys())  # dict의 key -> 이름
+alpha = {1: 'a', 2: 'b', 3: 'c'}
+print(alpha.keys())  # dict 의 key -> 이름
 print(alpha.values())
 
 # key 를 찾고 싶을 때 : using .keys()

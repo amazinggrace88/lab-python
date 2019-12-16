@@ -1,4 +1,3 @@
-# coding=utf-8
 """
 assignment
 """
@@ -6,14 +5,14 @@ assignment
 import numpy as np
 from math import sqrt
 
-#scores = 빈 리스트 선언
+# scores = 빈 리스트 선언
 scores = []
 # scores[1] = 99 error
 # scores.append() 로만 추가 가능
 
 # 난수 선언(0<=x<=100)
 for i in range(10):
-    x = np.random.randint(0, 101) #100까지 나와야 하므로
+    x = np.random.randint(0, 101)  # 100까지 나와야 하므로
     scores.append(x)
 print(scores)
 # i 는 for 문에서 사용되지 않지
@@ -32,6 +31,7 @@ print(f'총점 : {total}')
 print(f'총점 2 : {sum(scores)}')  # 중괄호 안에 함수를 쓸 수 있음.
 
 # list에 저장된 시험점수 10개의 평균을 계산, 출력
+# list 에 저장된 시험점수 10개의 평균을 계산, 출력
 avg = total / len(scores)
 print(f'평균 : {avg}')
 # or
@@ -47,13 +47,14 @@ min_score = scores[0]
 for score in scores:
     if score > max_score:  # list 에서 현재 최대값보다 더 큰 수를 찾은 경우
         max_score = score
-    if score < min_score:  # list 에서 현재 최소값보다 더 작은 수를 찾은 경우 # elif 하면 안됨! 계속 if 문에서 반복, 모든 값 각각 if 문에서 반복.
-        min_score = score
+    if score < min_score:  # list 에서 현재 최소값보다 더 작은 수를 찾은 경우 #elif하면 안됨! 계속 if 문에서 반복, 모든 값 각각 if 문에서 반복.        min_score = score
 print('최대값 : ', max_score, '최소값 : ', min_score)
 # cf. sorted() 정렬함수
 sorted_scores = sorted(scores)
 print('정렬됨 : ', sorted_scores)
 print('원본 배열 : ', scores) # 원본 배열은 변경하지 않는다.
+print('원본 배열 : ', scores)  # 원본 배열은 변경하지 않는다.
+
 
 # list 에 저장된 시험 점수의 표준편차 계산, 출력
 std = []
