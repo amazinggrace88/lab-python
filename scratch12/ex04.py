@@ -47,7 +47,7 @@ def separate_by_class2(dataset):
 
 def summarize_dataset(dataset):
     """
-    dataset 의 각 컬럼(=변수=특성)의 평균과 표준편차들을 계산, 리턴
+    dataset 의 각 컬럼(=변수=특성)의 평균과 표준편차, 갯수들을 계산, 리턴
     [(x1 variable's mean, stddev, count), (x2 variable's mean, stddev, count), ...]
     """
     # for col in zip(*dataset):
