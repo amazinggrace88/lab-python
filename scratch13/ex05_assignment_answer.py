@@ -20,7 +20,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import PolynomialFeatures
 from sklearn.metrics import mean_squared_error, r2_score
 
-datasets = load_boston()  # Bunch - python 의 dict 와 비슷한 타입 (dict을 상속받아 만들어졌기 때문)
+datasets = load_boston()  # Bunch - python 의 dict 와 비슷한 타입 (dict 을 상속받아 만들어졌기 때문)
 print('dataset keys : \n', datasets.keys())  # 'DESCR' - Describe
 print('dataset DESCRIBE is : \n', datasets['DESCR'])
 
@@ -32,12 +32,12 @@ print('X head is : \n', X[:2])
 print('y head is : \n', y[:2])
 features = datasets.feature_names  # = datasets['feature_names'] 오쌤추천방법
 
-# cf. dict 의 인덱싱 방법
-d = {'myname': 'grace', 'myage': 28}
-print(d['myname'])
 # cf. bunch 의 인덱싱 방법 - 두가지 방법 제공 : d['myname'] or d.myname
 # if. d['column-name'] -> 정상작동
 # if. d.column-name -> 오작동, 공백 또는 대시(-) 가 있으면 d.column - d.name 으로 받아들여진다.
+# cf. dict 의 인덱싱 방법
+d = {'myname': 'grace', 'myage': 28}
+print(d['myname'])
 
 print('column name(features) is : \n', features)  # column names..
 print(len(features))  # 13 개의 column 있어요~
@@ -143,21 +143,26 @@ print(f'Price ~ LSTAT : R^2 = {r2_4}, R^2 = {r2_5}')
 # Price ~ LSTAT + LSTAT**2 선형회귀
 # price = b0 + b1*lstat + b2*lstat**2
 # 3-2 와 R2 를 비교하여 더 큰 녀석이 데이터를 잘 설명한다.
+
 # PolynomialFeatues 객체 생성
 poly = PolynomialFeatures(degree=2, include_bias=False)
 # interactiotn_only = false 교호작용 효과만 분석 (즉 제곱항, 세제곱항 쓰지 않음)
 # include_bias : True 오차(잔차) 삽입
 # PolynomialFeatues 객체에 대한 설명 : 데이터에 다항식 항들을 컬럼으로 추가해주는 클래스 객체
+
 # 학습세트에 다항식 항을 추가 -> fit/train 할 때 사용 (필기 참고)
 X_train_lstat_poly = poly.fit_transform(X_train_lstat)  # 컬럼 옆에 lstst^2 등 을 붙여준다. (x+y)
 # 검증세트에 다항식 항을 추가 -> fit/train 할 때 사용
 X_test_lstat_poly = poly.fit_transform(X_test_lstat)
+
 # fitting
 lin_reg.fit(X_train_lstat_poly, y_train)
 print(f'intercept : {lin_reg.intercept_}, coefficient : {lin_reg.coef_}')
 # coefficient 계수가 작다 -> 직선에 가까운 직선이다.
+
 # predict
 y_pred_lstat_poly = lin_reg.predict(X_test_lstat_poly)  # polynomial 항을 넣는다~
+
 # graph
 plt.scatter(X_test_lstat, y_test)  # X_test_lstat: polynomial 항을 넣는 것이 아니야~~ 주의!
 xs = np.linspace(X_test_lstat.min(), X_test_lstat.max(), 100).reshape((100, 1))  # 구간을 100개로 나누고, 1차원 리스트로 배열함

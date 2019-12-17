@@ -31,7 +31,7 @@ print(X_b[:5])
 theta_best = np.linalg.inv(X_b.T.dot(X_b)).dot(X_b.T).dot(y)
 print(theta_best)  # theta_best 는 (b, a) 를 뜻한다.
 
-# 행렬식을 이용해서 찾은 theta 값과 LinearRegression 클래스에서 계산되 theta 비교
+# 행렬식을 이용해서 찾은 theta 값과 LinearRegression 클래스에서 계산된 theta 비교
 lin_reg = LinearRegression()
 lin_reg.fit(X, y)
 print(f'y절편: {lin_reg.intercept_}, 기울기: {lin_reg.coef_}')
