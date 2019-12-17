@@ -215,8 +215,12 @@ lin_reg.fit(X_train_rm_lstat_poly, y_train)
 print(f'intercept : {lin_reg.intercept_}, coefficient : {lin_reg.coef_}')  # 계수 5개
 # price = b0 + b1 * rm + b2 * lstat + b3 * rm^2 + b4 * rm * lstat + b5 * lstat^2
 #             [-1.76285033e+01  1.52009093e+00  2.09295492e+00 -3.53889752e-01 -3.14275848e-03] --> rm의 계수인 b1 부터 시작
-# 해석 :       rm의 계수가 음수가 나왔다. (rm 에 반비례한다는 의미) 즉, 과적합되었다. 지금 trainset에 너무 fit 되어있어 예측력 없어보임
-#             lstat 도 원래는 반비례였는데 정비례로 나와버림 ! 추가되면서 두 개의 interaction 이 생겼기 때문에, b4가 다른 변수들에 영향을 주는 것이다. --> ? 질문하기..
+# 해석 :       rm의 계수가 음수가 나왔다. (rm 에 반비례한다는 의미) -> 그러나 fit 함수는 price 의 오차만 줄이면 되기 때문에 rm의 계수는 관심 없음!
+#             여기서 price는 과적합되었다고 말할 수 있다. (지금 trainset 에 너무 fit 되어있어 예측력 없어보임 -> R2 score 가 높아짐)
+#             lstat 도 원래는 반비례였는데 정비례로 나와버림 !
+#             why ? 추가되면서 두 개의 interaction 이 생겼기 때문에, b4가 다른 변수들에 영향을 주는 것이다. --> 다중공선성?
+#             (https://ko.wikipedia.org/wiki/%EB%8B%A4%EC%A4%91%EA%B3%B5%EC%84%A0%EC%84%B1 정리~)
+
 # predict
 y_pred_rm_lstat_poly = lin_reg.predict(X_test_rm_lstat_poly)
 print('y true : ', y_test[:5])
@@ -236,6 +240,24 @@ print(f'Price ~ RM + LSTAT + RM^2 + RM*LSTAT + LSTAT^2: mse : {mse}, rmse : {rms
 X_train_last = np.c_[X_train_rm, X_train_lstat_poly]
 X_test_last = np.c_[X_test_rm, X_test_lstat_poly]
 print(f'X_train_last shape : \n', X_train_last.shape)
-print(f'X_test_last shape : \n', X_test_last.shape)
-print(f'X_train_last head(2) : \n', X_train_last[:2])
+print(f'X_test_last shape : \n', X_test_last.shape)  # 행의 갯수 동일해야 함
+print(f'X_train_last head(2) : \n', X_train_last[:2])  # 제곱해보면 진짜 잘됬는지 알 수 있다
 print(f'X_test_last head(2) : \n', X_test_last[:2])
+# fitting
+lin_reg.fit(X_train_last, y_train)
+print(f'Price ~ RM + LSTAT + LSTAT^2 : intercept : {lin_reg.intercept_}, coefficients : {lin_reg.coef_}')
+# price = b0 + b1 * rm + b2 * lstat + b3 * lstat^2
+#       [ 4.14148052 -1.79652146  0.03381396] --> rm 정비례, lstat 반비례 : 상식적인 그래프 도출되었다! (fitting 적절)
+# prediction
+y_pred_last = lin_reg.predict(X_test_last)
+print('y true : ', y_test[:5])
+print('y pred : ', y_pred_last[:5].round(2))
+# mse, rmse, r2 score
+mse = mean_squared_error(y_test, y_pred_last)
+rmse = np.sqrt(mse)
+r2_last = r2_score(y_test, y_pred_last)
+print(f'Price ~ RM + LSTAT + LSTAT^2:  mse : {mse}, rmse : {rmse}, r2 score : {r2_last}')
+# 해석 : 3-5, 3-6 두개의 모델이 거의 비슷한 결정계수 + 3-6 은 coef_가 상식적이므로 3-6 채택하자~~ (상식적으로 생각하쟈~~)
+
+# cmd + pip install seaborn
+# cmd + pip show seaborn -> location 디렉토리에 설치되어있는 거 찾아보기
