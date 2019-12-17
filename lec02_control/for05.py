@@ -30,17 +30,17 @@ squares = [n**2 for n in range(1, 6)]
 print(squares)
 
 # random number 로 10개 만들기
-randoms = [np.random.randint(0, 101) for x in range(10)] #x가 필요없는 변수이라도 for문을 맞춰야 하기 때문에 써주는 것
+randoms = [np.random.randint(0, 101) for x in range(10)]  # x가 필요없는 변수이라도 for문을 맞춰야 하기 때문에 써주는 것
 print(randoms)
 # or
-randoms = [np.random.randint(0, 101) for _ in range(10)] #_: for문을 맞춰야 하기 때문에 써주는 것
+randoms = [np.random.randint(0, 101) for _ in range(10)]  #_: for문을 맞춰야 하기 때문에 써주는 것
 print(randoms)
 
 
 # 짝수 배열
 even2 = []
 for n in range(1, 11):
-    if n  % 2 == 0:
+    if n % 2 == 0:
         even2.append(n)
 print(even2)
 # or
@@ -56,7 +56,7 @@ for n in range(1, 7):
 dice1 = []
 for x in range(1, 7):
     for y in range(1, 7):
-        dice1.append((x, y)) #tuple 생성하여 tuple append
+        dice1.append((x, y))  # tuple 생성하여 tuple append
 print(dice1)
 # or (list comprehension)
 dice2 = [(x, y) for x in range(1, 7) for y in range(1, 7)]
@@ -82,7 +82,7 @@ for x in range(1, 7):
         #     continue 넣지 않아도 된다.
 print(dice3)
 # or
-dice3 = [(x, y) for x in range(1, 7) # 줄바꿈도 가능
+dice3 = [(x, y) for x in range(1, 7)  # 줄바꿈도 가능
          for y in range(1, 7)
          if x >= y]
 print(dice3)

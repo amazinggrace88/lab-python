@@ -6,7 +6,7 @@ list : 여러개의 값들을 하나의 변수에 저장하기 위한 데이터 
 elements 를 변경 (추가.삭제) - mutable(ok)
 """
 
-numbers = [1, 2, 3, 4, 5] # list : 대괄호로 구분
+numbers = [1, 2, 3, 4, 5]  # list : 대괄호로 구분
 print(numbers)
 print(numbers[0])
 # print(numbers[5]) indexerror
@@ -45,7 +45,7 @@ print(person[0], type(person[0]))
 print(person[2], type(person[2]))
 
 # list decomposition : 분해 *****
-name, age, height, marriage = person #person을 변수 4개에 저장하겠다.
+name, age, height, marriage = person  # person 을 변수 4개에 저장하겠다.
 print(name, age, height, marriage)
 print(marriage) # 변수를 이해하기 쉽게 하기 위해서, 이름을 붙여주면 편리해진다.
 

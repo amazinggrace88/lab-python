@@ -21,21 +21,21 @@ print(person.items())
 
 students = {1:'강다혜', 2:'김수인', 3:'김영광', 10:'안도연'}
 print(students)
-print(students[1])  # index 연산자같지만, 우리가 사실은 key를 지정한 것! => 우리가 index를 이름짓는다고 생각할 수 있다.
+print(students[1])  # index 연산자같지만, 우리가 사실은 key 를 지정한 것! => 우리가 index 를 이름짓는다고 생각할 수 있다.
 
 # dict 에 값 추가
 students[4] = '김재성'
-print(students) # 제일 마지막에 추가됨
+print(students)  # 제일 마지막에 추가됨
 
-# dict의 값 변경
+# dict 의 값 변경
 students[4] = '홍길동'
 print(students)
 
-# dict의 값 삭제 - pop(key) 메소드 사용
+# dict 의 값 삭제 - pop(key) 메소드 사용 ---> **
 students.pop(4)  # pop - 꺼내다
 print(students)
 
-# dict의 활용
+# dict 의 활용
 book = {
     'title':'python programming manual',
     'authors' : ['ohsam', 'jennifer', 'paul'],

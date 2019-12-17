@@ -19,8 +19,7 @@ f = [0, 1]
 for i in range(2, 20):
     f.append(f[i-1] + f[i-2])  # x를 합쳐주어 넣어주었다. 원래 x = f[i-1] + f[i-2] / f.append(x)
 print('fibonacci sequence : ', f)
-# why .extend()는 안될까 ? extend(반복가능한 변수 = 즉, list ex) [4, 5]안의 값을 하나씩 append 하는 작업을 반복한다. )
-
+# why .extend()는 안될까 ? extend(반복가능한 변수 = 즉, list ex) [4, 5]안의 값을 하나씩 append 하는 작업을 반복한다.)
 
 # 소수(prime number) : 1과 자기자신으로만 나누어지는 정수
 # 2~10까지의 정수들 중에서 소수를 찾아서 출력
@@ -36,7 +35,7 @@ for n in range(2, 11):
         print(f'{n}은 소수!')
 
 
-# for/while 반복문과 else 가 함께 사용되는 경우 : python의 특수 기능
+# for/while 반복문과 else 가 함께 사용되는 경우 : python 의 특수 기능
 # 반복문이 break 를 만나지 않고, 범위 전체를 반복했을 때 else 가 실행됨
 # 반복문 중간에 break 를 만나면 else 는 실행되지 않음.
 for i in range(5):
