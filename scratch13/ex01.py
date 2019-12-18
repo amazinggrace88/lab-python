@@ -27,7 +27,6 @@ print(y[0])
 # sklearn -> ndarray 로 만들어져 있음
 
 
-
 # 2. subplots for modeling
 # 선형회귀 (linear regression)
 # y = ax + b
