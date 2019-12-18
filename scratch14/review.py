@@ -7,7 +7,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 from sklearn.datasets import load_iris
 from sklearn.linear_model import SGDClassifier
-from sklearn.metrics import confusion_matrix, classification_report
+from sklearn.metrics import confusion_matrix, classification_report, mean_squared_error, r2_score
 from sklearn.model_selection import train_test_split
 # bring the data
 iris = load_iris()
@@ -34,9 +34,19 @@ print(iris_df.describe())
 # why? sklearn -> ndarray 로 만들어져 있음
 # array 로 만들어준다.
 np.random.seed(1217)
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=1217)
 print(f'X_train len : {len(X_train)}, X_test len : {len(X_test)}')
 
-# SGDC 객체 생성
+# SGDC 객체 생성 - 다중회귀
 sgdc = SGDClassifier()
-sgdc.fit(X_train)
+sgdc.fit(X_train, y_train)
+y_pred = sgdc.predict(X_test)
+
+# 모델 평가 - confusion matrix / classification report
+conf_ = confusion_matrix(y_test, y_pred)
+report = classification_report(y_test, y_pred)
+print(f'confusion matrix : \n {conf_}')
+print(f'classification report : \n {report}')
+#   [[ 8  1  0]
+#    [ 0 12  0]
+#    [ 0  6  3]], 정확도 0.77

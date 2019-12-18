@@ -46,10 +46,25 @@ plt.show()
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=1217)
 # 분류 알고리즘 중에서 Logistic Regression 선택
 log_reg = LogisticRegression()  # 2 개 보면 그 앞 패키지를 보고 선택 (linear_model)
+
+"""
+초기값 설덩
+"""
+
 # fitting
 log_reg.fit(X_train, y_train)
+
+"""
+14, ex03 b0, b1, b2 알아냄
+"""
+
 # prediction
 predictions = log_reg.predict(X_test)
+
+"""
+logistic (sigmoid) 함수에 넣어서 예측값을 바탕으로 확률을 계산, > 0.5 = 0, < 0.5 = 1 으로 분류
+"""
+
 print('true : ', y_test)
 print('pred : ', predictions)  # 관계식을 찾으려고 하는 게 아니라, 분류를 하려고 해요~!
 # 성능 측정 : confusion matrix
@@ -57,7 +72,7 @@ print('confusion matrix : \n', confusion_matrix(y_test, predictions))
 print('classification report : \n', classification_report(y_test, predictions))
 #  0 [[ 9  0  0]
 #  1  [ 0 11  1] 1번을 2번이라고 예측
-#  2  [ 0  1  8]] : 2번을 1번이라고 예측
+#  2  [ 0  1  8]] : 2번을 1번이라고 예측, 정확도 0.93
 
 # SGDClassifier - stochastic gradient decent 로 해보기!
 # https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.SGDClassifier.html
