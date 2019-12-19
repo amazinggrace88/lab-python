@@ -48,7 +48,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 log_reg = LogisticRegression()  # 2 개 보면 그 앞 패키지를 보고 선택 (linear_model)
 
 """
-초기값 설덩
+초기값 설정
 """
 
 # fitting
