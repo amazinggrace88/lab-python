@@ -21,7 +21,7 @@ except ValueError:
 except IndexError:
     print('인덱스 에러 처리')
 else:
-    print('try의 모든 내용을 정상적으로 실행')
+    print('try 의 모든 내용을 정상적으로 실행')
 finally:
     print('finally 블록')
 

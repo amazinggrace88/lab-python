@@ -133,23 +133,73 @@ def divide(x, y):
             divided_matrix[i, j] = x[i, j] / y[i, j]
     return divided_matrix
 
-
+# 나의 정답 (Amazing!)
 def dot(x, y):
     """
-    dot 내적
+    두행렬 A와 B의 dot 연산 결과를 리턴
+    dot_ij = sum(e)[x_ie * y_ej]
     """
-    row = x.shape[0]
-    col = x.shape[1]
-    dot_matrix = np.zeros((row, col), dtype=int)
-    print(dot_matrix)
-    dot_matrix_element = 0
-    for x_col in range(row):
-        for y_col in range(col):
-            for element in range(x_col):
-                dot_matrix_element += x[x_col, element] * y[element, y_col]
-                print(f'dot_matrix_element += {x[x_col, element]} * {y[element, y_col]}')  # 뭐가 문제인 거 같기는 한데, 잘 한거 같기도 하다. 다시 해보기~
-            dot_matrix[x_col, y_col] = dot_matrix_element
-    return dot_matrix
+    x_row = x.shape[0]  # dot 의 결과행렬 row 갯수
+    x_col = x.shape[1]  # 각 원소들끼리 곱한 결과를 더하는 횟수
+    y_row = y.shape[0]  # if 문에서 shape 이 같은지 확인하기 위함
+    y_col = y.shape[1]  # dot 의 결과행렬 col 갯수
+    if x_col != y_row:
+        raise ValueError('X의 column 과 Y의 row 갯수는 같아야 합니다!')
+    else:
+        dot_matrix = np.zeros((x_row, y_col), dtype=int)
+        for x_i in range(x_row):
+            for y_j in range(y_col):
+                dot_matrix_element = 0  # 여기서 reset 해주어야 해요!~ element 1 개 reset
+                for element in range(x_col):
+                    dot_matrix_element += x[x_i, element]*y[element, y_j]
+                    print(f'dot_matrix_element += {x[x_i, element]}*{y[element, y_j]}')
+                dot_matrix[x_i, y_j] = dot_matrix_element
+        return dot_matrix
+
+
+# 오쌤 정답
+def my_dot(A, B):
+    """두 행렬 A와 B의 dot 연산 결과를 리턴
+        dot_ik = sum(j)[a_ij * b_jk]
+    """
+    print('A shape:', A.shape)
+    print('B shape:', B.shape)
+    if A.shape[1] != B.shape[0]:
+        raise ValueError('A의 column과 B의 row 개수는 같아야 함!')
+    n_row = A.shape[0]  # dot 결과 행렬의 row 개수
+    n_col = B.shape[1]  # dot 결과 행렬의 column 개수
+    temp = A.shape[1]  # 각 원소들끼리 곱한 결과를 더하는 회수
+    numbers = []  # 결과값들을 저장할 리스트
+    for i in range(n_row):
+        for k in range(n_col):
+            n = 0
+            for j in range(temp):
+                n += A[i, j] * B[j, k]
+            numbers.append(n)
+    return np.array(numbers).reshape(n_row, n_col)  # append 후 다시 shape 만들어주었다.
+
+
+# 오쌤 정답 2
+def dot_1d(X, Y):
+    if len(X) != len(Y):
+        raise ValueError('len(X) != len(Y)')
+    result = 0
+    for i in range(len(X)):
+        result += X[i] * Y[i]
+    return result
+
+
+def dot_2d(X, Y):
+    n_row = X.shape[0]
+    n_col = Y.shape[1]
+    if X.shape[1] != Y.shape[0]:
+        raise ValueError('X.shape[1] != Y.shape[0]')
+    result = np.zeros((n_row, n_col))
+    for i, row in enumerate(X):
+        for j, col in enumerate(zip(*Y)):
+            print(f'i={i}, row={row}, j={j}, col={col}')
+            result[i, j] = dot_1d(row, col)
+    return result
 
 
 # test
@@ -164,6 +214,9 @@ print('subtract test :\n', subtract(e1, e))
 print('mutiply test :\n', multiply(e1, e))
 print('divide test :\n', divide(e1, e))
 print('dot test :\n', dot(e, e1))
+print('dot test :\n', e.dot(e1))
+print('dot test :\n', e @ e1)  # numpy 의 array 에서만 사용할 수 있는 기호 @
+# numpy 에서는 e.dot(e1) 의 .을 못써서..
 
 """
 선형대수 용어 정리 -- numpy 함수를 활용하여 만들어보기!

@@ -6,7 +6,7 @@ error, exception: 프로그램 실행 중에 발생할 수 있는 오류
 프로그램을 작성 -> try 구문
 """
 
-# prnit(1)  # NameError
+# print(1)  # NameError
 
 # int(): 문자열 -> 정수
 # float(): 문자열 -> 실수

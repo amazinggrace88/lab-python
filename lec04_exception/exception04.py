@@ -9,3 +9,11 @@ try:
     print('입력한 나이:', age)
 except ValueError as e:
     print(e.args)
+
+
+try:
+    age = int(input('input your age>>'))
+    if age < 0:
+        raise ValueError
+except ValueError as e:
+    print(e.args)
