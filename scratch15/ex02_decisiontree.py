@@ -23,8 +23,6 @@ def uncertainty(p):
     확률 p=0이면, 사건이 항상 발생하지 않는다라고 확신 -> 불확실성 0
     확률 p=1이면, 사건이 항상 발생한다고 확신 -> 불확실성 1
     확률 0 < p < 1이면, 사건이 발생할 수도, 발생하지 않을 수도 있다 -> 불확실성이 있다.
-    불확실성이 크면 엔트로피가 크다.
-    불확실성이 작으면(확실하면) 엔트로피가 작다.
      """
     # math.log(p, base=2) -> log_2 가 밑수
     # 1보다 작은 로그는 음수에 -을 붙여서 양수로 만든다
@@ -85,12 +83,14 @@ def partition_by(dataset, attr_name):
         partitions[key].append(sample)
     return partitions
 
+# defaultdict : dictionary 에 기본값을 정의하고, 키값이 없더라도 에러를 출력하지 않고 기본값을 출력한다.
+
 
 def partition_entropy_by(dataset, by_partition, by_entropy):
     """
     attr_name 으로 분리된 각 파티션에서 label_name 의 엔트로피를 각각 계산하고, 파티션 내에서의 엔트로피 * 파티션의 비율들의 합을 리턴
     dataset : 데이터 전체
-    by_partition : patitioning을 나눌 컬럼명(특성)
+    by_partition : patitioning 을 나눌 컬럼명(특성)
     by_entropy : 합격 불합격 결과(엔트로피를 계산할 컬럼명)
 
     과정
@@ -106,7 +106,7 @@ def partition_entropy_by(dataset, by_partition, by_entropy):
         values = []
         for sample in partition:  # 부분집합인 partition 안의 sample 들(candidate)의 갯수 - 원소 1개 만큼 반복
             values.append(getattr(sample, by_entropy))
-        labels.append(values)  # [Junior의 T, F, T, F], [Senior의 T, F, T, F]..
+        labels.append(values)  # [Junior 의 T, F, T, F], [Senior 의 T, F, T, F]..
     print(labels)  # [[t,f,t,f], [..], [..] ..] 위의 리스트를 모아 하나의 리스트로!
     # 각 파티션이 차지하는 비율을 계산하고, 각 파티션에서의 엔트로피에 그 비율을 곱해주기 위해서
     total_count = sum(len(label) for label in labels)
@@ -154,7 +154,7 @@ if __name__ == '__main__':
     plt.title('-p * log(p)')
     plt.show()
     # 해석
-    # 엔트로피는 불확실성! https://ko.wikipedia.org/wiki/%EC%A0%95%EB%B3%B4_%EC%97%94%ED%8A%B8%EB%A1%9C%ED%94%BC
+    # 엔트로피는 불확실성! https://web.mit.edu/16.unified/www/FALL/thermodynamics/notes/node56.html
     # 확률 1 = 모두 발생하는 경우, 불확실성이 없다. 확실하게 정해져 있으므로
     # 확률 0 = 발생하지 않는 경우, 불확실성이 없다. 확실하게 정해져 있으므로
 

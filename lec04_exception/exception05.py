@@ -18,7 +18,7 @@ def user_input():
             else:
                 raise ValueError('1, 2, 3만 가능')
         except ValueError as e:
-            print(e.args)
+            print(e.args)  # ???? e.args?
     # return n
 
 
