@@ -5,6 +5,7 @@ assignment
 import numpy as np
 from math import sqrt
 
+
 # scores = 빈 리스트 선언
 scores = []
 # scores[1] = 99 error
@@ -47,7 +48,8 @@ min_score = scores[0]
 for score in scores:
     if score > max_score:  # list 에서 현재 최대값보다 더 큰 수를 찾은 경우
         max_score = score
-    if score < min_score:  # list 에서 현재 최소값보다 더 작은 수를 찾은 경우 #elif하면 안됨! 계속 if 문에서 반복, 모든 값 각각 if 문에서 반복.        min_score = score
+    if score < min_score:  # list 에서 현재 최소값보다 더 작은 수를 찾은 경우 #elif하면 안됨! 계속 if 문에서 반복, 모든 값 각각 if 문에서 반복.
+        min_score = score
 print('최대값 : ', max_score, '최소값 : ', min_score)
 # cf. sorted() 정렬함수
 sorted_scores = sorted(scores)
