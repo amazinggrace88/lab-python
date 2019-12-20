@@ -4,7 +4,7 @@ decision tree
 import math
 from collections import Counter, defaultdict
 import numpy as np
-from typing import NamedTuple
+from typing import NamedTuple, Any
 import matplotlib.pyplot as plt
 
 
@@ -122,6 +122,109 @@ def partition_entropy_by(dataset, by_partition, by_entropy):
     return ent
 
 
+# 데이터 타입을 먼저 지정해준다
+class Leaf(NamedTuple):  # NamedTuple 을 상속받는 클래스
+    value: Any  # 어떤 타입이든 올 수 있다는 뜻, 합격 불합격 저장 용도로 사용
+
+
+class Split(NamedTuple):
+    # 무엇으로 가지를 치는지 attribute 이름이 있어야 해요
+    attribute: str  # 트리에서 가지(branch)가 나눠지는 기준 : key 값은 무조건 문자열 ex_level
+    subtree: dict  # 중간에 있는 tree (ex_senior 의 subtree)
+    
+
+# predict 함수
+def predict(model, sample):
+    """sample을 model(의사결정나무)에 적용했을 때, 예측 결과를 리턴"""
+    # 기본원리 : leaf type 이 들어오면 우리가 예측을 멈춘다!
+    if isinstance(model, Leaf):
+        # model 이 최종 노드인 Leaf 타입이면, Leaf 가 가지고 있는 value (값) 을 리턴
+        return model.value
+
+    # model이 아닌 경우에는 가지를 따라 내려가야 하기 때문에
+    # sample(ex_candidate) 이 attribute(ex_level) 로 가지고 있는 값을 찾아서, 해당 가지로 내려감
+    subtree_key = getattr(sample, model.attribute)  # sample 의 attribute 의 값을 찾는다.
+    # ex_model.attribute 가 level 이라면 sample 의 값인 ex_'Senior' 값이 나온다.
+    print('subtree_key : ', subtree_key)
+
+    # model 이 가지고 있는 subtree (ex_'Senior'라는 subtree 로 다시 간다)
+    subtree = model.subtree[subtree_key]
+    return predict(subtree, sample)  # 재귀함수 : (ex_ Senior)
+
+
+def build_tree(dataset, by_splits, target):
+    print('\n>> building tree.. ')
+    print(f'dataset len : {len(dataset)} = {dataset}')
+    print(f'by_split : {by_splits}, target : {target}')
+    # dataset (data), by_splits (tree 나누는 기준), target(결과)
+    
+    # target 의 갯수를 셈 by Counter 객체 생성 Counter : {True: x, False: y}
+    target_counts = Counter(getattr(sample, target)
+                            for sample in dataset)  # 리스트로 만들어진 True, False 갯수를 센다. (counter 객체 dict 타입 리턴)
+    print('target_counts : ', target_counts)  # dict 에서는 key:value 가 1개의 data, 그래서 dict 의 length 는 2
+    
+    # Counter 의 length 가 1개이면
+    # leaf 가 될 수 있는 상태란? target 갯수, 즉 Counter 의 length 가 1개인 상태 - Leaf 생성하고 종료
+    if len(target_counts) == 1:
+        keys = list(target_counts.keys())
+        # = [k for k in target_counts.keys()] -> [] 연산자 사용 불가.. why? keys() 는 generator 객체이므로,,
+        # target_counts.keys() generator (반복문 안에서 리스트를 만들어주는 객체)이므로 리스트를 먼저 만들어 주어야 함 -> 리스트 함수 쓰면 됨
+        result = keys[0]
+        leaf = Leaf(result)
+        print('leaf : ', leaf)
+        return leaf
+
+    # tree 의 depth 가 깊어져서 더이상 서브 트리를 나눌 기준이 없을 때 (ex_ 4가지 기준 모두 씀)
+    # by_splits = []일때, 원소가 없으면 False
+    # if len(by_splits) == 0:
+    if not by_splits:
+        return Leaf(list(target_counts.keys())[0])  # leaf node 를 무조건 리턴
+
+    # Counter 의 length 가 1이 아니면, 파티션을 나눌 수 있음.
+    # by_splits(가지 나누는 기준)의 각 변수로 파티션을 나눔.
+    # 각 파티션별 엔트로피(level 로 나눴을 때 엔트로피.. )를 계산해서 가장 낮은 엔트로피 변수를 선택
+    # best_splilter = min(by_splits, key=partition_entropy_by())
+    # partition_entropy_by()를 key= 에 바로 못쓰는 이유
+    # 파라미터 1개밖에 못주기 때문, by_splits 는 key 의 함수(dataset, ..)에 파라미터로 주는데, partition_entropy_by()는 파라미터 3개이다.
+    # (ex_ sorted(list, key=lambda x: len(x)) # 리스트의 문자열 1개가 x가 되어서 글자 수 세고 글자수 기준으로 정렬 - 파라미터 1개만 된다)
+    # 어디다 넣어야 할 지 알려주기 위해서 partition_entropy_by()를 호출할 수 있는 wrapper 함수(helper 함수)를 작성
+
+    # wrapper 함수(helper 함수)
+    # 내부함수(자신의 바깥쪽에 선언된 변수를 모두 가져다 쓸 수 있다 - ??? ctrl + 클릭으로 확인)
+    def splitted_entropy(split_attr):
+        print('split_attr = ', split_attr)
+        # 파라미터 3개 중 1개를 딱 정해준다.(split_attr) / build_tree 의 파라미터 dataset, target 이 자동으로 파라미터로 들어간다 - ???)
+        result = partition_entropy_by(dataset, split_attr, target)
+        print('splitted entropy = ', result)
+        return result
+
+    best_splilter = min(by_splits, key=splitted_entropy)
+    print('best_spliter : ', best_splilter)
+
+    # 선택된 변수(entropy 최솟값을 주는 변수)로 Split 객체를 생성 - 첫번째 가지를 치자!
+    partitions = partition_by(dataset, best_splilter)
+    print('partitions : ', partitions)
+
+    # partition 을 만든 이유 : 나눠준 candidate 들을 key 값(ex_level)의 value 들을 부분집합으로 만들어주기 위해서!
+    # 각 부분집합들은 또다른 가지의 dataset 이 된다.
+    # 선택한 변수를 제외한 나머지 변수들로 sub tree 를 만듬
+    # branch 기준 리스트에서 선택된 변수 제거
+    new_split = [x for x in by_splits
+                 if x != best_splilter]  # best_spliter 와 다른 새로운 split 기준 리스트 생성
+    print(f'제거 후 by_splits : {by_splits}, new_splits : {new_split}')
+
+    # subtree 생성
+    subtree = {k: build_tree(subset, new_split, target)  # 재귀함수로 가지 밑 다른 트리를 만듬 *by_splits 전의 변수 없어진 상태
+               for k, subset in partitions.items()}
+    # 해석 : {'Senior' - key ! : [Candidate(level='Senior', ..), ...- value 는 원소 5개짜리 부분집합
+
+    # Split 객체를 생성하여 리턴
+    return Split(best_splilter, subtree)
+
+# leaf 하고 나서 다시 올라가는데 왜 올라가지? 다시 올라가서 재귀함수인가?
+# 같은 depth 에서는 같은 기준으로 나누게 하기 위하여 new_split 을 써야 한다. (근데 다시 올라가는 거 모르겠음)
+
+
 if __name__ == '__main__':
     candidates = [Candidate('Senior', 'Java', False, False, False),
                   Candidate('Senior', 'Java', False, True, False),
@@ -214,21 +317,21 @@ if __name__ == '__main__':
     print(f'entropy partitioned by phd : {ent_phd}')
 
     """ 결과 해석 - 불확실성이 적은 질문을 먼저 던지는 것이 좋다. 즉 엔트로피가 가장 적은 것부터 트리를 그리자.
-    [[False, False, False, True, True], [True, True, True, True], [True, True, False, True, False]]
-    Counter({False: 3, True: 2}) 1번 의 FALSE 3, 3
-    Counter({True: 4})
-    Counter({True: 3, False: 2})
+    [[False, False, False, True, True], [True, True, True, True], [True, True, False, True, False]] : 파티션
+    Counter({False: 3, True: 2}) : 1번의 FALSE 3, 3 엔트로피 계산 * 비율 곱하여 더한다.
+    Counter({True: 4})           : 2번의 TRUE 4  
+    Counter({True: 3, False: 2}) : 3번의
     entropy partitioned by level : 0.6935361388961919
     
     [[False, False, True], [True, True, False, True, True, True, False], [True, False, True, True]]
     Counter({False: 2, True: 1})
-    Counter({True: 5, False: 2})  확실성 더 높다. 엔트로피 더 낮다.
+    Counter({True: 5, False: 2}) : 확실성 더 높다. 엔트로피 더 낮다.
     Counter({True: 3, False: 1})
-    entropy partitioned by lang : 0.8601317128547441  
+    entropy partitioned by lang : 0.8601317128547441  불확실성이 더 많아 전체 엔트로피 더 커질 수 밖에 없다.
       
     [[False, False, True, True, False, True, False], [True, False, True, True, True, True, True]]
-    Counter({False: 4, True: 3})
-    Counter({True: 6, False: 1})
+    Counter({False: 4, True: 3}) : 불확실성 크다
+    Counter({True: 6, False: 1}) : 불확실성 상대적으로 적다
     entropy partitioned by tweets : 0.7884504573082896
     
     [[False, True, True, True, False, True, True, True], [False, False, True, True, True, False]]
@@ -236,3 +339,36 @@ if __name__ == '__main__':
     Counter({False: 3, True: 3})
     entropy partitioned by phd : 0.8921589282623617  --> 박사학위가 엔트로피가 제일 크다.
     """
+
+    # test - 자료구조를 만들고 있다!
+    hire_tree = Split(
+        'level',                                          # branch 나누는 기준 : root node
+        {
+            'Senior': Split(                              # 첫번째 가지
+                'tweet',
+                {True: Leaf(True), False: Leaf(False)}),  # subtree
+            'Mid': Leaf(True),  # 전부 합격인 leaf 노드
+            'Junior': Split(
+                 'phd',
+                 {True: Leaf(False), False: Leaf(True)})
+        }
+    )
+
+    # 두번째 그림도 만들어보기 (노트 필기)
+
+    # predict test
+    print(hire_tree)
+    candidate_1 = Candidate('Senior', 'Java', False, False, False)
+    result = predict(hire_tree, candidate_1)
+    print(result)
+
+    candidate_2 = Candidate('Mid', 'Python', False, False, True)
+    result = predict(hire_tree, candidate_2)
+    print(result)
+
+    # built tree 함수 테스트
+    tree = build_tree(candidates, ['level', 'lang', 'tweet', 'phd'], 'result')
+    print(tree)  # 최소 엔트로피로 이루어진 tree 를 출력한다.
+
+    # pip install graphviz
+    
