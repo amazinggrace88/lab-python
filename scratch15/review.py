@@ -1,4 +1,3 @@
-# NamedTuple -> ? 차이가 뭐지?
 # namedTuple -> ? 차이가 뭐지?
 import math
 from collections import namedtuple, Counter, defaultdict
@@ -31,18 +30,18 @@ def partition_by(dataset, attr_name):
     return partitions
 
 
-def class_probabilities(labels):  # class 들의 확률을 구해주는 함수.
+def class_probabilities(labels):  # class 들의 확률을 구해주는 함수
     total_count = len(labels)  # 전체 갯수
     counts = Counter(labels)  # collection 의 Counter
     print(counts)
     probabilities = []  # 집어넣을 확률 정하기
     for count in counts.values():  # value 만 빼냈다
         p = count / total_count  # 확률을 구해주었다.
-        probabilities.append()  # 각 value의 확률 리스트에 더함
+        probabilities.append()  # 각 value 의 확률 리스트에 더함
     return probabilities
 
 
-def uncertainity(p):
+def uncertainty(p):
     return -p * math.log(p, 2)
 
 
@@ -50,7 +49,7 @@ def entropy(class_probabilities):
     ent = 0
     for p in class_probabilities:
         if p != 0:
-            ent += uncertainity(p)
+            ent += uncertainty(p)
     return ent
 
 
