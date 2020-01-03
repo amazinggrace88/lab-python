@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-'''
+"""
 1) R의 ggplot2 패키지에 포함된 mpg 데이터 프레임을 csv 파일 형식으로 저장
 2) 저장된 csv 파일을 파이썬 프로젝트의 scratch08 폴더에 복사
 3) 저장된 csv 파일을 읽어서 배기량(displ)과 시내 연비(cty) 데이터를 추출
@@ -7,7 +6,7 @@
 	cty = slope * displ + intersept(intersect로 부르기도 함)
 의 기울기(slope)와 절편(intersect)을 경사 하강법의 3가지 방법(stochastic, batch, mini-batch)으로 결정하고 값을 비교
 5) 배기량과 시내 연비 산점도 그래프(scatter plot)과 선형 회귀 직선을 하나의 plot으로 출력해서 결과 확인
-'''
+"""
 import random
 from lab_python.scratch04.ex01 import vector_mean
 from lab_python.scratch08.ex03 import gradient_step
