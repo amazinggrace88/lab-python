@@ -1,10 +1,10 @@
-'''
+"""
 list comprehension ***
 python 에만 있는 문법
 코드를 간단하게 구현 가능
 ex_ filtering 해서 새로운 list 를 만들고 싶을 때 (ex_시험점수 80점 이상을 sorting)
     데이터 전처리에 사용
-'''
+"""
 import numpy as np
 
 # before
@@ -33,7 +33,7 @@ print(squares)
 randoms = [np.random.randint(0, 101) for x in range(10)]  # x가 필요없는 변수이라도 for문을 맞춰야 하기 때문에 써주는 것
 print(randoms)
 # or
-randoms = [np.random.randint(0, 101) for _ in range(10)]  #_: for문을 맞춰야 하기 때문에 써주는 것
+randoms = [np.random.randint(0, 101) for _ in range(10)]  # _: for문을 맞춰야 하기 때문에 써주는 것
 print(randoms)
 
 

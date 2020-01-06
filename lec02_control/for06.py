@@ -23,7 +23,7 @@ for x in num_name:
     print(x)  # zip 을 반복문 안에 넣어주면 tuple 들을 넣어준다.
 # or
 for x in zip(numbers, names):
-    print(x)  # zip은 for 문 안에서만 사용이 된다.
+    print(x)  # zip 은 for 문 안에서만 사용이 된다.
 
 # zip 을 이용한 dictionary comprehension
 superman3 = {}

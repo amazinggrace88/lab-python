@@ -33,14 +33,14 @@ else:
     print("0 또는 음수")
 print("프로그램 종료")
 
-#if-elif
+# if-elif
 """
 if 조건식:
     조건식이 참일 때 실행할 문장
 elif 조건식2:
     조건식2이 참일 때 실행할 문장
 else:
-    모든 조건식이 거짓이 때 실행할 문장
+    모든 조건식이 거짓일 때 실행할 문장
 """
 score = 90
 if score >= 90:
@@ -62,12 +62,12 @@ else:  # 홀수이면
 
 print("프로그램 종료")
 
-if num % 2 == 0: #짝수이면
+if num % 2 == 0:  # 짝수이면
     if num % 4 == 0:
         print('four')
     else:
         print('not four even')
-else: #홀수이면
+else:  # 홀수이면
     print('odd')
 
 print("프로그램 종료")

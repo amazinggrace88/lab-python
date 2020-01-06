@@ -1,5 +1,5 @@
 """
-dict (dictionary) : key-value의 쌍으로 이루어진 데이터들을 저장하는 사전식 데이터타입
+dict (dictionary) : key-value 의 쌍으로 이루어진 데이터들을 저장하는 사전식 데이터타입
 """
 
 person = {'name': 'ohsam', 'age': 16, 'height': 170.5}  # 중괄호 key:value - 1개의 데이터타입
@@ -19,7 +19,7 @@ print(person.values())
 print(person.items())
 # for 문에서 사용될 것
 
-students = {1:'강다혜', 2:'김수인', 3:'김영광', 10:'안도연'}
+students = {1: '강다혜', 2: '김수인', 3: '김영광', 10: '안도연'}
 print(students)
 print(students[1])  # index 연산자같지만, 우리가 사실은 key 를 지정한 것! => 우리가 index 를 이름짓는다고 생각할 수 있다.
 
@@ -37,10 +37,10 @@ print(students)
 
 # dict 의 활용
 book = {
-    'title':'python programming manual',
-    'authors' : ['ohsam', 'jennifer', 'paul'],
-    'company' : 'gilbut',
-    'isbn' : 97911
+    'title': 'python programming manual',
+    'authors': ['ohsam', 'jennifer', 'paul'],
+    'company': 'gilbut',
+    'isbn': 97911
 }
 print(book)
 print(book['authors'])

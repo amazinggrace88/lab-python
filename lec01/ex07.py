@@ -19,10 +19,10 @@ print(numbers)
 
 
 # 배열에 원소 추가
-numbers.append(6) # 제일 마지막 추가..
+numbers.append(6)  # 제일 마지막 추가..
 print(numbers)
 # numbers.append(7, 7) 여러개 추가 불가
-numbers.extend([7, 8, 9]) #extend : 확장됨, []이라는 새로운 list를 각각 append해준다. ***** extend *****
+numbers.extend([7, 8, 9])  # extend : 확장됨, []이라는 새로운 list 를 각각 append 해준다. ***** extend *****
 print(numbers)
 
 # append vs extend
@@ -47,15 +47,15 @@ print(person[2], type(person[2]))
 # list decomposition : 분해 *****
 name, age, height, marriage = person  # person 을 변수 4개에 저장하겠다.
 print(name, age, height, marriage)
-print(marriage) # 변수를 이해하기 쉽게 하기 위해서, 이름을 붙여주면 편리해진다.
+print(marriage)  # 변수를 이해하기 쉽게 하기 위해서, 이름을 붙여주면 편리해진다.
 
 # 2차원 list
 matrix = [
-    [1, 2, 3], #index 0번 원소
-    [4, 5, 6], #index 1번 원소
-    [7, 8, 9]  #index 2번 원소
+    [1, 2, 3],  # index 0번 원소
+    [4, 5, 6],  # index 1번 원소
+    [7, 8, 9]   # index 2번 원소
 ]
-print(matrix) #크기가 3 = 원소의 갯수가 3개
+print(matrix)  # 크기가 3 = 원소의 갯수가 3개
 print(matrix[0], type(matrix[0]))
 print(matrix[0][0], type(matrix[0][0]))
 print(matrix[0][2], type(matrix[0][2]))

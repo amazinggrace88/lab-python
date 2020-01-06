@@ -43,14 +43,14 @@ for i in range(5):
         break
     print(i, end='')
 else:
-    print('모든 반복을 끝냄') #else의 위치가 안쪽으로 들어가면 안된다! why? for문에서 실행되어야 하기 때문.
+    print('모든 반복을 끝냄')  # else 의 위치가 안쪽으로 들어가면 안된다! why? for 문에서 실행되어야 하기 때문.
 # other case
 for i in range(5):
     if i == 5:
         break
     print(i, end='')
 else:
-    print('모든 반복을 끝냄') #else:범위 전체를 반복함.(break 미실행)
+    print('모든 반복을 끝냄')  # else:범위 전체를 반복함.(break 미실행)
 # continue 를 만날 때는 else 를 실행한다.
 for i in range(5):
     if i == 3:
@@ -61,8 +61,8 @@ else:
 
 # for else 구문을 이용하여 소수 찾기 실습
 for n in range(2, 11):
-    for divider in range(2, n): # 나눠주는 숫자 n-1
+    for divider in range(2, n):  # 나눠주는 숫자 n-1
         if n % divider == 0:
             break
-    else: #break 만나지 않았을 때 즉, 소수일 때
+    else:  # break 만나지 않았을 때 즉, 소수일 때
         print(f'{n}은 소수!')

@@ -17,18 +17,18 @@ for i in range(5):  # (0, 1, 2, 3, 4)
 
 # 줄바꿈을 넣지 말고, i 출력 후 뒤에 줄바꿈 대신 '공백'을 i 끝에 출력
 for i in range(5):
-    print(i, end = ' ')
+    print(i, end=' ')
 print()  # 줄바꿈만 출력한다는 의미
 
 
 # 1 ~ 4 까지 출력 range(from, to)
 for i in range(1, 5):  # (1, 2, 3, 4)
-    print(i, end = ' ')
+    print(i, end=' ')
 print()
 
 
 # range(from, to, step)
-for i in range(1, 5, 2): #(1, 3)
+for i in range(1, 5, 2):  # (1, 3)
     print(i, end=' ')
 print()
 
