@@ -1,9 +1,9 @@
-'''
+"""
 Database - oracle (2) : 검색 select - using cursor
 
 Oracle 데이터베이스 서버에서 select 구문 실행, 결과 확인 - using cursor
 (withline을 계속 호출하는 것과 동일한 절차)
-'''
+"""
 import cx_Oracle
 import lab_python.lec08_database.oracle_config as cfg
 

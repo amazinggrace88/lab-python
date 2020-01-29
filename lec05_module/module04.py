@@ -13,7 +13,7 @@ from lab_python.utils import mymath2
 
 
 # step 2. 함수/변수 가져다쓰기
-print(mymath1.pi) # 모듈의 함수들을 볼 수 있다.
+print(mymath1.pi)  # 모듈의 함수들을 볼 수 있다.
 print(mymath2.divide(1, 2))
 
 

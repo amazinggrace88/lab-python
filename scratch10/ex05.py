@@ -1,11 +1,11 @@
 # coding=utf-8
-'''
+"""
  DataFrame.apply(function, axis)
     axis = 0 (기본값) : DataFrame 의 각 컬럼을 함수의 파라미터에 전달함.
     axis = 1 : DataFrame 의 각 행을 함수의 파라미터에 전달함.
     함수의 리턴 값을 돌려받음
     df의 행(axis=1)을 함수의 매개변수로 주거나, df의 열(axis=0)을 함수의 매개변수로 주는 것
-'''
+"""
 
 import numpy as np
 import pandas as pd

@@ -1,6 +1,6 @@
-'''
+"""
 n차원(3차원 이상)의 경사 하강법 - using 편미분
-'''
+"""
 from lab_python.scratch04.ex01 import scalar_multiply, add, distance
 
 
@@ -208,21 +208,3 @@ if __name__ == '__main__':
             init_v = next_v
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
->>>>>>> b698240d953ddbe567f907dd4d5e2692599f16a2
